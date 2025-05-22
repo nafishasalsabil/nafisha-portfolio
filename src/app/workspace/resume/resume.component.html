@@ -1,0 +1,96 @@
+<div class="container py-16 px-4 sm:px-6 lg:px-8 bg-surface-0">
+  <div class="flex flex-col md:flex-row items-center gap-10 max-w-6xl mx-auto">
+    <div class="hobby-parent py-10 flex flex-col items-center justify-center gap-4">
+      <div>
+        <h2 class="text-3xl font-medium">Work Participation</h2>
+      </div>
+      <div>
+        <div class="title-box"></div>
+        <div class="title-line"></div>
+      </div>
+      <div class="mt-5">
+        <p class="text-gray-400 text-center">
+          Over the past year, I’ve contributed to production-grade Angular applications, including admin panels, invoice systems, and map-based live tracking. My journey includes full-time roles, internships, and freelance projects focused on solving real-world problems with clean, scalable code.
+        </p>
+      </div>
+      <div >
+        <p-timeline [value]="events" align="alternate" styleClass="customized-timeline">
+          <ng-template #marker let-event>
+            <span
+              class="flex items-center justify-center w-5 h-5 rounded-full border border-gray-400 bg-white z-10"
+            >
+              <i [ngClass]="[event.icon, '!text-[14px]']"></i>
+            </span>
+
+
+          </ng-template>
+
+          <ng-template #content let-event>
+            <div class="bg-surface-0 border border-surface-200 rounded-lg shadow-sm p-6 w-full">
+              <div class="text-sm text-surface-500 mb-1">{{ event.date }}</div>
+              <div class="text-lg text-surface-800 mb-1">{{ event.title }}</div>
+              <div class="text-sm text-surface-800 mb-3">{{ event.company }}</div>
+              <p class="text-surface-500 text-sm leading-relaxed tracking-normal">
+                {{ event.description }}
+              </p>
+            </div>
+          </ng-template>
+        </p-timeline>
+
+      </div>
+    </div>
+  </div>
+  <div class="hobby-parent py-10 flex flex-col items-center justify-center gap-4 max-w-6xl mx-auto">
+    <div>
+      <h2 class="text-3xl font-medium">Work Expertise</h2>
+    </div>
+    <div>
+      <div class="title-box"></div>
+      <div class="title-line"></div>
+    </div>
+    <div class="mt-5">
+      <p class="text-gray-400 text-center">
+        I specialize in Angular, TypeScript, and PrimeNG, with growing expertise in Tailwind CSS and Firebase. My focus is on building intuitive, responsive UIs, integrating backend systems, and ensuring design accuracy through pixel-perfect implementation.
+      </p>
+
+    </div>
+    <div class="flex flex-col md:flex-row gap-10 py-10 max-w-5xl mx-auto w-full justify-center items-center">
+      <!-- Left: Categories -->
+      <div class="w-full md:w-1/3">
+        <div class="flex flex-col justify-evenly gap-6">
+          @for(category of skillCategories; track category){
+            <p-button
+              (onClick)="selectCategory(category)"
+              [label]="category.label"
+              [severity]="selectedCategory.label === category.label ? 'primary' : 'secondary'"
+              [outlined]="selectedCategory.label !== category.label"
+              [style]="{ width: '200px' }"
+              class="text-sm font-semibold"
+            ></p-button>
+          }
+
+        </div>
+      </div>
+
+      <!-- Right: Progress Bars -->
+
+      <div class="w-full md:w-2/3 space-y-6 min-h-[200px] flex flex-col justify-center">
+        @for(skill of selectedCategory.skills; track skill){
+          <div>
+            <div class="flex justify-between items-center text-sm font-medium mb-1 text-gray-700">
+              <span>{{ skill.name }}</span>
+              <span>{{ skill.displayValue }}%</span>
+            </div>
+            <p-progressBar
+              [style]="{ height: '6px' }"
+              [value]="skill.displayValue"
+              [showValue]="false"
+              styleClass="custom-progress"
+            ></p-progressBar>
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+</div>

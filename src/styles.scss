@@ -1,0 +1,9 @@
+@use './tailwind.css';
+@use 'assets/layout/_common.scss';
+@use 'assets/layout/_global.scss';
+@import "primeicons/primeicons.css";
+
+
+html {
+  scroll-behavior: smooth;
+}
