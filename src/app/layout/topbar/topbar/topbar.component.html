@@ -1,22 +1,66 @@
-<div class="parent w-full bg-surface-50">
-  <div class="flex md:flex-row justify-between items-center w-full max-w-screen-xl px-4 py-6 gap-4">
-    <div class="text-2xl font-bold">CRISTINO.</div>
+<div
+  class="parent w-full fixed top-0 z-50 text-color transition-all duration-300"
+  [ngStyle]="{
+    'background-color': 'var(--topbar-color)',
+    'box-shadow': isScrolled ? '0 6px 12px rgba(0,0,0,0.1)' : 'none'
+  }"
+>
+
+
+<div class="flex md:flex-row justify-between items-center w-full max-w-screen-xl px-4 py-4 gap-4">
+    <div class="text-2xl font-bold">NAFISHA.</div>
 
     <p-menubar
       [model]="items"
-      class="w-full lg:flex lg:justify-center border-none shadow-none bg-transparent font-semibold text-sm text-gray-800 menu"
+      class="w-full lg:flex lg:justify-center border-none shadow-none bg-transparent font-semibold text-sm light:text-gray-800 menu"
     ></p-menubar>
 
     <div class="hidden lg:flex gap-2">
-      <button class="w-10 h-10 border rounded-md flex items-center justify-center text-gray-700 hover:text-red-500">
-        <i class="pi pi-facebook"></i>
+      <button class="w-10 h-10 border rounded-md flex items-center justify-center light:text-gray-700 hover:text-primary-500">
+        <a href="https://www.facebook.com/nafisanam.salsabil/">
+          <i class="pi pi-facebook"></i>
+        </a>
       </button>
-      <button class="w-10 h-10 border rounded-md flex items-center justify-center text-gray-700 hover:text-red-500">
-        <i class="pi pi-twitter"></i>
+      <button class="w-10 h-10 border rounded-md flex items-center justify-center light:text-gray-700 hover:text-primary-500">
+        <a href="https://www.linkedin.com/in/nafisha-salsabil-38a771223/">
+          <i class="pi pi-linkedin"></i>
+        </a>
       </button>
-      <button class="w-10 h-10 border rounded-md flex items-center justify-center text-gray-700 hover:text-red-500">
-        <i class="pi pi-instagram"></i>
+      <button class="w-10 h-10 border rounded-md flex items-center justify-center light:text-gray-700 hover:text-primary-500">
+        <a href="https://www.instagram.com/nafishasalsabil/">
+          <i class="pi pi-instagram"></i>
+        </a>
       </button>
+      <button class="w-10 h-10 border rounded-md flex items-center justify-center light:text-gray-700 hover:text-primary-500">
+        <a href="https://leetcode.com/u/nafishasalsabil/">
+          <i class="pi pi-code"></i>
+        </a>
+      </button>
+      <button class="w-10 h-10 border border-primary rounded-md flex items-center justify-center text-gray-700 hover:text-primary-500"
+              (click)="op.toggle($event)">
+        <i class="pi pi-spin pi-cog text-primary"></i>
+      </button>
+      <p-popover #op>
+        <div class="flex flex-col gap-4 w-[15.8rem] h-[22rem]">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-muted-color font-semibold">Theme</span>
+            <button type="button" class="text-gray-600 hover:text-primary" (click)="toggleDarkMode()"
+            >
+              <i class="pi text-lg"
+                 [ngClass]="{
+             'pi-moon': layoutService.isDarkTheme(),
+             'pi-sun': !layoutService.isDarkTheme()
+           }">
+              </i>
+            </button>
+          </div>
+
+          <app-configurator></app-configurator>
+        </div>
+      </p-popover>
+
+
+
     </div>
   </div>
 </div>

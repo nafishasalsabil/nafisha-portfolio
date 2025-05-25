@@ -1,9 +1,10 @@
-<div class="container py-16 px-4 sm:px-6 lg:px-8 bg-surface-0">
-  <div class="flex flex-col md:flex-row items-center gap-10 max-w-6xl mx-auto">
+<div class="wrapper py-16 px-4 sm:px-6 lg:px-8" style="background-color: var(--gray-bg)">
+  <div class="flex flex-col md:flex-row items-center gap-10 max-w-6xl mx-auto mb-5">
 
     <div class="relative w-full md:w-1/2">
-      <div class="absolute inset-0 rounded-lg border-[16px] border-surface-200 top-0 left-[3%] right-[3%] z-0"></div>
-      <img src="assets/images/hero.png" alt="About Image" class="relative z-10 w-full h-auto object-cover rounded-lg"/>
+      <div class="absolute inset-0 rounded-lg border-[16px] border-surface top-0 z-0 w-full"></div>
+<!--      <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-lg border-[16px] border-surface-300 z-0"></div>-->
+      <img src="assets/images/demo.jpg" alt="About Image" class="relative z-10 w-full h-auto object-cover rounded-lg p-4"/>
     </div>
 
     <div class="w-full md:w-1/2 text-center md:text-left space-y-4">
@@ -19,14 +20,17 @@
       </p>
 
       <div class="pt-4 space-y-4">
-        <button class="bg-primary-500 hover:bg-primary-600 text-surface-0 font-medium py-2 px-6 rounded shadow">
-          View Portfolio
-        </button>
+        <a href="#projects">
+          <button class="bg-primary-500 hover:bg-primary-600 text-surface-0 font-medium py-2 px-6 rounded shadow">
+            View Portfolio
+          </button>
+        </a>
+
       </div>
     </div>
   </div>
 
-  <div class="hobby-parent py-10 flex flex-col items-center justify-center gap-4">
+  <div class="hobby-parent py-10 flex flex-col items-center justify-center gap-4 mt-10">
     <div>
       <h2 class="text-3xl font-medium">Hobbies & Interests</h2>
     </div>
@@ -40,17 +44,25 @@
       </p>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 my-5">
-      @for(h of hobbies; track h){
+      @for (h of hobbies; track h; let i = $index) {
         <div
-          class="flex items-center rounded-md px-5 py-4 transition-all duration-200 ease-in-out
-             bg-surface-50 hover:bg-surface-0 hover:shadow-[0_10px_25px_rgba(60,72,88,0.1)] hover:-translate-y-1"
+          class="flex items-center rounded-md px-5 py-4 transition-all duration-200 ease-in-out hover:-translate-y-1"
+          [ngStyle]="{
+      'background-color': hoveredIndex === i ? 'var(--card-hover-bg)' : 'var(--card-bg)',
+      'box-shadow': hoveredIndex === i ? '0 10px 25px var(--card-shadow)' : 'none'
+    }"
+          (mouseenter)="hoveredIndex = i"
+          (mouseleave)="hoveredIndex = null"
         >
-          <div class="pr-4 border-r border-surface-200 mr-4">
-            <i class="pi pi-{{h.icon}} text-surface-700"></i>
+          <div class="pr-4 mr-4 border-r" [ngStyle]="{ 'border-color': 'var(--card-border)' }">
+            <i class="pi pi-{{ h.icon }}" [ngStyle]="{ 'color': 'var(--card-icon)' }"></i>
           </div>
-          <span class="text-surface-800 tracking-wide">{{ h.label }}</span>
+          <span class="tracking-wide" [ngStyle]="{ 'color': 'var(--card-text)' }">
+      {{ h.label }}
+    </span>
         </div>
       }
+
     </div>
   </div>
 </div>

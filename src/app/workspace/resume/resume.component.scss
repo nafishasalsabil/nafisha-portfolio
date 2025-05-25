@@ -1,0 +1,9 @@
+@media screen and (max-width: 960px) {
+  ::ng-deep.customized-timeline .p-timeline-event-opposite {
+    flex: 0;
+  }
+  ::ng-deep     .customized-timeline .p-timeline-event:nth-child(2n)
+{
+  flex-direction: row !important;
+}
+}
