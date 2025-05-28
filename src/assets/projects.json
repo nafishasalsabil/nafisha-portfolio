@@ -1,0 +1,158 @@
+[
+  {
+    "id": 1,
+    "img": "org.png",
+    "label": "Jotno Admin Panel(Org)",
+    "category": "Professional Work",
+    "description": "Jotno Admin Panel is a centralized organizational dashboard designed for managing multiple operational aspects of the Jotno ecosystem. It includes features like user management, prescriber onboarding, role-based access control, bulk uploads, and invoice generation. The interface adheres to strict UI/UX fidelity and ensures seamless navigation for administrative workflows.",
+    "technologies": [
+      "Angular",
+      "PrimeNG",
+      "Bootstrap",
+      "REST API",
+      "Typescript"
+    ]
+  },
+  {
+    "id": 2,
+    "img": "doctor.png",
+    "label": "Jotno Doctor Web",
+    "category": "Professional Work",
+    "description": "The Doctor Web app facilitates appointment scheduling, prescription issuance, and profile management for healthcare professionals. It integrates live geolocation tracking and telemedicine capabilities while ensuring responsive UI across devices. The application supports secure login, streamlined session handling, and advanced patient-doctor interaction features.",
+    "technologies": [
+      "Angular",
+      "PrimeNG",
+      "RxJS",
+      "Bootstrap"
+    ]
+  },
+  {
+    "id": 3,
+    "img": "agrovet.png",
+    "label": "Agrovet",
+    "category": "Professional Work",
+    "description": "Agrovet is a veterinary pharmaceutical management platform that handles distributor-level inventory, sales tracking, and KPI-based reporting. It supports dynamic SKU allocation, APR actualization, and backchannel data access for business users. The solution is scalable and built with robust component design in Angular, tightly coupled with PrimeNG UI components.",
+    "technologies": [
+      "Angular",
+      "Node.js",
+      "REST API",
+      "PrimeNG",
+      "Google Maps API",
+      "Live Location"
+    ]
+  },
+  {
+    "id": 4,
+    "img": "edcr.png",
+    "label": "EDCR(Electronic Daily Call Report)",
+    "category": "Professional Work",
+    "description": "EDCR is a digital platform for field force to log daily calls, customer visits, and product detailing activities. Built as a progressive web app (PWA), it ensures offline data capture and syncing with Firebase. The app simplifies territory management, compliance tracking, and performance logging.",
+    "technologies": [
+      "Angular",
+      "Firebase",
+      "Firestore",
+      "PWA"
+    ]
+  },
+  {
+    "id": 5,
+    "img": "mrs.png",
+    "label": "MRS",
+    "category": "Professional Work",
+    "description": "MRS is a medical representative scheduling and reporting tool that helps align field visits with sales targets. It includes automated scheduling, visit logging, and summary dashboards. The project simplifies field operations and ensures accountability through structured activity tracking.",
+    "technologies": [
+      "Angular",
+      "Bootstrap",
+      "Node.js"
+    ]
+  },
+  {
+    "id": 6,
+    "img": "auth.png",
+    "label": "Central Admin Panel",
+    "category": "Professional Work",
+    "description": "The Central Admin Panel unifies multiple internal tools under a single administrative dashboard for Square Health. It features role-based management, user impersonation, audit logs, and modular integration with different service platforms. The panel was designed to reduce administrative overhead and improve platform governance.",
+    "technologies": [
+      "Angular",
+      "Tailwind",
+      "PrimeNG",
+      "Keycloak",
+      "REST API"
+    ]
+  },
+  {
+    "id": 7,
+    "img": "mullar.png",
+    "label": "Mullar Tex Ltd.",
+    "category": "Freelance",
+    "description": "This freelance project involved developing a responsive company website for a Bangladeshi textile manufacturer. The site includes a catalog, inquiry form, and content management interface for easy product updates. Focus was given to clean UI and mobile-first design principles.",
+    "technologies": [
+      "Angular",
+      "PrimeNG",
+      "Bootstrap",
+      "Laravel",
+      "MySQL"
+    ]
+  },
+  {
+    "id": 9,
+    "img": "grip.png",
+    "label": "Product Logos(The Hair Gel)",
+    "category": "Freelance",
+    "description": "A creative freelance project to design logos and product branding for a personal care product line. Deliverables included multiple logo variants, label layouts, and packaging mockups. Tools like Illustrator and Photoshop were used to maintain professional visual identity.",
+    "technologies": [
+      "Canva",
+      "Illustrator",
+      "Photoshop"
+    ]
+  },
+  {
+    "id": 10,
+    "img": "careinvoice.png",
+    "label": "CareInvoice",
+    "category": "Personal Projects",
+    "description": "CareInvoice is a self-initiated SaaS project that automates invoice generation for small clinics and healthcare startups. It supports Stripe-based payments, client management, and email-based invoice dispatch. The UI was designed with simplicity in mind, using Tailwind and Firebase for backend support.",
+    "technologies": [
+      "Angular",
+      "Bootstrap",
+      "Spring Boot"
+    ]
+  },
+  {
+    "id": 11,
+    "img": "clique.png",
+    "label": "Clique",
+    "category": "Personal Projects",
+    "description": "Clique is a prototype of a niche social platform for building closed interest-based communities. Users can join groups, post updates, and collaborate on private threads. Built as a MERN stack application, the project explored identity handling and access control mechanisms.",
+    "technologies": [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB"
+    ]
+  },
+  {
+    "id": 12,
+    "img": "cassette.png",
+    "label": "Cassette",
+    "category": "Personal Projects",
+    "description": "Cassette is a frontend clone of a modern music streaming interface, styled to mimic apps like Spotify. It showcases responsive layouting, search/filtering, and dynamic theming. The app consumes Spotify APIs to simulate a real music browsing experience.",
+    "technologies": [
+     "HTML",
+     "CSS",
+     "Firebase"
+    ]
+  },
+  {
+    "id": 13,
+    "img": "chalkboard.png",
+    "label": "Chalkboard",
+    "category": "Personal Projects",
+    "description": "Chalkboard is an experimental web app for collaborative whiteboarding and virtual classroom sessions. It features real-time canvas drawing using WebSockets and interactive annotation tools. Built with Next.js and Canvas API, it served as a testbed for synchronous visual collaboration.",
+    "technologies": [
+      "Android Studio",
+      "Java",
+      "Firebase"
+    ]
+  }
+]

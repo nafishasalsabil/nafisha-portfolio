@@ -1,42 +1,89 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Menubar} from 'primeng/menubar';
-import {Ripple} from 'primeng/ripple';
-import {MenuItem, PrimeTemplate} from 'primeng/api';
+import {MenuItem} from 'primeng/api';
+import {NgClass, NgStyle} from '@angular/common';
+import {Popover} from 'primeng/popover';
+import {LayoutService} from '../../../shared/layout/layout.service';
+import {ConfiguratorComponent} from '../../configurator/configurator.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
   imports: [
     Menubar,
-    Ripple,
-    PrimeTemplate
+    NgClass,
+    Popover,
+    NgStyle,
+    ConfiguratorComponent
   ],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss'
 })
 export class TopbarComponent implements OnInit{
   items: MenuItem[] | undefined;
+  isScrolled = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isScrolled = window.pageYOffset > 0;
+  }
+
+  constructor(public layoutService: LayoutService, private router: Router) {}
+
   ngOnInit() {
     this.items = [
       {
-        label: 'Home',
+        label: 'HOME',
+        command: () => {
+          if (window.location.pathname !== '/') {
+            this.router.navigate(['/'], { fragment: 'dashboard' });
+          } else {
+            document.getElementById('dashboard')?.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
       },
       {
-        label: 'Services',
-        command: () =>
-          document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
+        label: 'SERVICES',
+        command: () => {
+          if (window.location.pathname !== '/') {
+            this.router.navigate(['/'], { fragment: 'services' });
+          } else {
+            document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
       },
       {
-        label: 'Resume',
-        command: () =>
-          document.getElementById('resume')?.scrollIntoView({ behavior: 'smooth' })
+        label: 'RESUME',
+        command: () => {
+          if (window.location.pathname !== '/') {
+            this.router.navigate(['/'], { fragment: 'resume' });
+          } else {
+            document.getElementById('resume')?.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
       },
       {
-        label: 'Projects',
+        label: 'PROJECTS',
+        command: () => {
+          if (window.location.pathname !== '/') {
+            this.router.navigate(['/'], { fragment: 'projects' });
+          } else {
+            document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
       },
       {
-        label: 'Contact',
-      },
+        label: 'CONTACT',
+        command: () => {
+          if (window.location.pathname !== '/') {
+            this.router.navigate(['/'], { fragment: 'contact' });
+          } else {
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
     ];
+
 
     if (window.innerWidth < 961) {
       this.items.push({
@@ -45,20 +92,28 @@ export class TopbarComponent implements OnInit{
           {
             label: 'Facebook',
             icon: 'pi pi-facebook',
-            command: () => window.open('https://facebook.com', '_blank')
-          },
-          {
-            label: 'Twitter',
-            icon: 'pi pi-twitter',
-            command: () => window.open('https://twitter.com', '_blank')
+            command: () => window.open('https://www.facebook.com/nafisanam.salsabil/', '_blank')
           },
           {
             label: 'Instagram',
             icon: 'pi pi-instagram',
-            command: () => window.open('https://instagram.com', '_blank')
-          }
+            command: () => window.open('https://www.instagram.com/nafishasalsabil/', '_blank')
+          },
+          {
+            label: 'LinkedIn',
+            icon: 'pi pi-linkedin',
+            command: () => window.open('https://www.linkedin.com/in/nafisha-salsabil-38a771223/', '_blank')
+          },
+          {
+            label: 'LeetCode',
+            icon: 'pi pi-code',
+            command: () => window.open('https://leetcode.com/u/nafishasalsabil/', '_blank')
+          },
         ]
       });
     }
+  }
+  toggleDarkMode() {
+    this.layoutService.layoutConfig.update((state) => ({ ...state, darkTheme: !state.darkTheme }));
   }
 }

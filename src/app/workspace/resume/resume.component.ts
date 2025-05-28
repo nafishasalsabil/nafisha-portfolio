@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Timeline} from 'primeng/timeline';
-import {Card} from 'primeng/card';
 import {Button} from 'primeng/button';
 import {NgClass} from '@angular/common';
 import {ProgressBar} from 'primeng/progressbar';
@@ -9,7 +8,6 @@ import {ProgressBar} from 'primeng/progressbar';
   selector: 'app-resume',
   imports: [
     Timeline,
-    Card,
     Button,
     NgClass,
     ProgressBar
@@ -17,10 +15,12 @@ import {ProgressBar} from 'primeng/progressbar';
   templateUrl: './resume.component.html',
   styleUrl: './resume.component.scss'
 })
-export class ResumeComponent implements OnInit{
+export class ResumeComponent implements OnInit {
   events: any[];
-  skillCategories: any[]=[];
-  selectedCategory: any=null;
+  skillCategories: any[] = [];
+  selectedCategory: any = null;
+  screenWidth: number = window.innerWidth;
+  protected readonly window = window;
 
   constructor() {
     this.events = [
@@ -61,39 +61,39 @@ export class ResumeComponent implements OnInit{
       {
         label: 'Web Development',
         skills: [
-          { name: 'Angular', value: 90, displayValue: 0 },
-          { name: 'React', value: 65, displayValue: 0 },
-          { name: 'TypeScript', value: 85, displayValue: 0 },
-          { name: 'JavaScript', value: 80, displayValue: 0 },
-          { name: 'PrimeNG', value: 90, displayValue: 0 },
-          { name: 'Tailwind CSS', value: 60, displayValue: 0 }
+          {name: 'Angular', value: 90, displayValue: 0},
+          {name: 'React', value: 65, displayValue: 0},
+          {name: 'TypeScript', value: 85, displayValue: 0},
+          {name: 'JavaScript', value: 80, displayValue: 0},
+          {name: 'PrimeNG', value: 90, displayValue: 0},
+          {name: 'Tailwind CSS', value: 75, displayValue: 0}
         ]
       },
       {
         label: 'UI/UX & Design',
         skills: [
-          { name: 'Figma', value: 85, displayValue: 0 },
-          { name: 'Canva', value: 80, displayValue: 0 },
-          { name: 'Adobe Illustrator', value: 70, displayValue: 0 },
-          { name: 'Pixel-Perfect Execution', value: 90, displayValue: 0 }
+          {name: 'Figma', value: 85, displayValue: 0},
+          {name: 'Canva', value: 80, displayValue: 0},
+          {name: 'Adobe Illustrator', value: 70, displayValue: 0},
+          {name: 'Pixel-Perfect Execution', value: 90, displayValue: 0}
         ]
       },
       {
         label: 'Backend & DevOps',
         skills: [
-          { name: 'Laravel (PHP)', value: 60, displayValue: 0 },
-          { name: 'Firebase', value: 70, displayValue: 0 },
-          { name: 'Node.js', value: 50, displayValue: 0 },
-          { name: 'Spring Boot (basic)', value: 55, displayValue: 0 },
-          { name: 'Docker', value: 50, displayValue: 0 },
-          { name: 'Git & Git Platforms', value: 85, displayValue: 0 }
+          {name: 'Laravel (PHP)', value: 80, displayValue: 0},
+          {name: 'Firebase', value: 70, displayValue: 0},
+          {name: 'Node.js', value: 75, displayValue: 0},
+          {name: 'Spring Boot (basic)', value: 70, displayValue: 0},
+          {name: 'Docker', value: 50, displayValue: 0},
+          {name: 'Git & Git Platforms', value: 85, displayValue: 0}
         ]
       },
       {
         label: 'Mobile Development',
         skills: [
-          { name: 'iOS (Xcode)', value: 40, displayValue: 0 },
-          { name: 'Android (Java)', value: 60, displayValue: 0 }
+          {name: 'iOS (Xcode)', value: 40, displayValue: 0},
+          {name: 'Android (Java)', value: 75, displayValue: 0}
         ]
       }
     ];
@@ -106,7 +106,10 @@ export class ResumeComponent implements OnInit{
 
   ngOnInit(): void {
     this.animateSkills(this.selectedCategory.skills);
-    }
+    window.addEventListener('resize', () => {
+      this.screenWidth = window.innerWidth;
+    });
+  }
 
   selectCategory(category: any) {
     this.selectedCategory = category;

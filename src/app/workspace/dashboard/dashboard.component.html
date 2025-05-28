@@ -1,18 +1,43 @@
-<div class="parent py-16 px-4 sm:px-6 lg:px-8 bg-surface-50">
-  <div class="flex items-start max-w-4xl mx-auto ">
-    <div>
-      <span class="text-lg font-semibold  text-gray-900 span-text">Looking for a Developer?</span>
+<div class="parent py-16 px-4 sm:px-6 lg:px-8" style="background-color: var(--topbar-color);">
+  <div class="flex items-start max-w-4xl mx-auto gap-4">
+    <div class="w-full">
+      <span class="text-lg font-semibold  light:text-gray-900 span-text">Looking for a Developer?</span>
       <h1 class="text-5xl font-bold text-primary-600 span-text mb-3">I'm Nafisha Salsabil</h1>
-      <p class="text-gray-400 text-base sm:text-lg leading-relaxed p-text">
-        Frontend Developer with expertise in Angular and UI/UX design, also experienced in backend development through personal projects.
+      <p class="text-base sm:text-lg leading-relaxed p-text" style="color: var(--text-color-gray)">
+        Frontend Developer with expertise in Angular and UI/UX design, also experienced in backend development through
+        personal projects.
       </p>
       <div class="flex gap-4 mt-10">
-        <p-button styleClass="bg-indigo-500" label="Hire me"></p-button>
-        <p-button outlined label="Download CV" icon="pi pi-download"></p-button>
+        <a href="#contact">
+          <p-button styleClass="bg-indigo-500" label="Hire me"></p-button>
+        </a>
+        <a href="assets/Nafisha_Salsabil_CV.pdf" download>
+          <p-button outlined label="Download CV" icon="pi pi-download" iconPos="right"></p-button>
+        </a>
       </div>
     </div>
-    <div>
-      <img src="assets/images/m2e.jpg" alt="" class="w-full h-full">
+    <div class="w-full md:w-1/2 justify-center hidden md:flex">
+      <div class="relative w-64 h-64">
+        <svg class="absolute top-0 left-0 w-full h-full z-20 rounded-md" viewBox="0 0 100 100"
+             preserveAspectRatio="none">
+          <rect
+            x="0"
+            y="0"
+            width="100"
+            height="100"
+            class="stroke-primary-500 fill-none"
+            stroke-width="3"
+            pathLength="1"
+            style="
+          stroke-dasharray: 1;
+          stroke-dashoffset: 1;
+          animation: draw-border 1s ease forwards, fade-out 1s ease 1s forwards;
+        "
+          />
+        </svg>
+        <img src="assets/images/me.jpg" alt="Nafisha Salsabil"
+             class="w-full h-full object-cover rounded-md shadow-lg z-10 relative"/>
+      </div>
     </div>
   </div>
 </div>

@@ -1,9 +1,17 @@
 @use './tailwind.css';
 @use 'assets/layout/_common.scss';
 @use 'assets/layout/_global.scss';
+@use 'assets/layout/_light';
+@use 'assets/layout/_dark';
+@use 'assets/layout/_core.scss';
+
+
+
 @import "primeicons/primeicons.css";
+
 
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 70px;
 }

@@ -1,0 +1,107 @@
+<div
+  class="wrapper relative bg-cover bg-center bg-no-repeat rounded-3xl mx-4 overflow-hidden my-10"
+  style="background-image: url('assets/images/hire.jpg');"
+>
+
+  <div class="relative z-10 flex flex-col items-center justify-center text-center px-6 py-20">
+    <h3 class="text-2xl sm:text-3xl font-semibold text-white mb-4">
+      I Am Available For Freelancer Projects.
+    </h3>
+    <p class="text-surface-300 max-w-2xl mb-6">
+      I help brands and businesses build clean, functional, and engaging digital experiences. Let’s collaborate to bring your ideas to life with quality and precision.
+    </p>
+
+    <a
+      href="#contact-me"
+      class="inline-flex items-center gap-2 px-5 py-2 text-white bg-primary-500 hover:bg-primary-600 rounded-md font-medium transition-all"
+    >
+      Hire me
+      <i class="pi pi-chevron-down"></i>
+    </a>
+
+  </div>
+</div>
+<section id="contact-me" class="py-10">
+  <div class="wrapper py-16 px-4 sm:px-6 lg:px-8" style="background-color: var(--card-hover-bg)">
+    <div class="flex flex-col  items-center gap-5 max-w-6xl mx-auto">
+      <div>
+        <h2 class="text-3xl font-medium">Contact Me</h2>
+      </div>
+      <div>
+        <div class="title-box"></div>
+        <div class="title-line"></div>
+      </div>
+      <div class="mt-5">
+        <p class="text-surface-400 text-center">
+          Let’s build something great together. Whether you have a question, a freelance opportunity, or just want to say hello — I’d love to hear from you. Drop a message and I’ll get back to you as soon as possible.
+        </p>
+
+      </div>
+      <div class="mt-5 flex gap-4 items-center justify-center">
+        <a
+          href="tel:+8801738739735"
+          class="w-auto h-10 border px-3 rounded-md flex items-center justify-center text-gray-700 hover:text-primary-500"
+        >
+          <i class="pi pi-phone text-primary"></i>
+          <span class="mx-2">+8801738739735</span>
+        </a>
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=nafishasalsabil98@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-auto h-10 border px-3 rounded-md flex items-center justify-center text-gray-700 hover:text-primary-500"
+        >
+          <i class="pi pi-envelope text-primary"></i>
+          <span class="mx-2">nafishasalsabil98&#64;gmail.com</span>
+        </a>
+
+      </div>
+
+    </div>
+    <div class="mt-10">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="w-full max-w-6xl mx-auto">
+        <a #mailtoLink style="display: none;"></a>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="flex flex-col space-y-4">
+            <input
+              type="text"
+              formControlName="name"
+              placeholder="Your Name :"
+              class="border rounded-md p-3 text-sm w-full focus:outline-none focus:none"
+            />
+            <input
+              type="email"
+              formControlName="email"
+              placeholder="Your email :"
+              class="border rounded-md p-3 text-sm w-full focus:outline-none focus:none"
+            />
+            <input
+              type="text"
+              formControlName="subject"
+              placeholder="Your subject :"
+              class="border rounded-md p-3 text-sm w-full focus:outline-none focus:none"
+            />
+          </div>
+          <div>
+      <textarea
+        formControlName="message"
+        placeholder="Your Message :"
+        class="border rounded-md p-3 text-sm w-full h-full min-h-[160px] resize-none focus:outline-none focus:none"
+      ></textarea>
+          </div>
+        </div>
+
+        <div class="mt-6 text-right">
+          <p-button
+            type="submit" label="Send Message"
+            [disabled]="!contactForm.valid"
+            class="w-full">
+          </p-button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+
