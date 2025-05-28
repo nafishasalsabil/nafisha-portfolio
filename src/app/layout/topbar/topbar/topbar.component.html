@@ -7,8 +7,8 @@
 >
 
 
-<div class="flex md:flex-row justify-between items-center w-full max-w-screen-xl px-4 py-4 gap-4">
-    <div class="text-2xl font-bold">NAFISHA.</div>
+<div class="flex md:flex-row justify-between items-center w-full max-w-screen-xl px-4 py-4 gap-2">
+    <div class="text-2xl font-bold cursor-pointer" [routerLink]="'/'">NAFISHA.</div>
 
     <p-menubar
       [model]="items"
@@ -36,31 +36,30 @@
           <i class="pi pi-code"></i>
         </a>
       </button>
-      <button class="w-10 h-10 border border-primary rounded-md flex items-center justify-center text-gray-700 hover:text-primary-500"
-              (click)="op.toggle($event)">
-        <i class="pi pi-spin pi-cog text-primary"></i>
-      </button>
-      <p-popover #op>
-        <div class="flex flex-col gap-4 w-[15.8rem] h-[22rem]">
-          <div class="flex items-center justify-between">
-            <span class="text-sm text-muted-color font-semibold">Theme</span>
-            <button type="button" class="text-gray-600 hover:text-primary" (click)="toggleDarkMode()"
-            >
-              <i class="pi text-lg"
-                 [ngClass]="{
+    </div>
+  <div>
+    <button class="w-10 h-10 border border-primary rounded-md flex items-center justify-center text-gray-700 hover:text-primary-500"
+            (click)="op.toggle($event)">
+      <i class="pi pi-spin pi-cog text-primary"></i>
+    </button>
+    <p-popover #op>
+      <div class="flex flex-col gap-4 w-[15.8rem] h-[22rem]">
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-muted-color font-semibold">Theme</span>
+          <button type="button" class="text-gray-600 hover:text-primary" (click)="toggleDarkMode()"
+          >
+            <i class="pi text-lg"
+               [ngClass]="{
              'pi-moon': layoutService.isDarkTheme(),
              'pi-sun': !layoutService.isDarkTheme()
            }">
-              </i>
-            </button>
-          </div>
-
-          <app-configurator></app-configurator>
+            </i>
+          </button>
         </div>
-      </p-popover>
 
-
-
-    </div>
+        <app-configurator></app-configurator>
+      </div>
+    </p-popover>
+  </div>
   </div>
 </div>
