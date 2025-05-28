@@ -1,11 +1,11 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {Menubar} from 'primeng/menubar';
 import {MenuItem} from 'primeng/api';
 import {NgClass, NgStyle} from '@angular/common';
 import {Popover} from 'primeng/popover';
 import {LayoutService} from '../../../shared/layout/layout.service';
 import {ConfiguratorComponent} from '../../configurator/configurator.component';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
@@ -14,7 +14,8 @@ import {Router} from '@angular/router';
     NgClass,
     Popover,
     NgStyle,
-    ConfiguratorComponent
+    ConfiguratorComponent,
+    RouterLink
   ],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss'
@@ -28,15 +29,23 @@ export class TopbarComponent implements OnInit{
     this.isScrolled = window.pageYOffset > 0;
   }
 
-  constructor(public layoutService: LayoutService, private router: Router) {}
+  constructor(public layoutService: LayoutService, private router: Router, private el: ElementRef) {}
 
   ngOnInit() {
+    const path = window.location.pathname;
+    const hash = window.location.hash;
+
+    if ((path === '/' || path === '/index.html') && hash) {
+      // Clear fragment and navigate to '/'
+      this.router.navigateByUrl('/');
+    }
+
     this.items = [
       {
         label: 'HOME',
         command: () => {
           if (window.location.pathname !== '/') {
-            this.router.navigate(['/'], { fragment: 'dashboard' });
+            this.router.navigate(['/']);
           } else {
             document.getElementById('dashboard')?.scrollIntoView({ behavior: 'smooth' });
           }
@@ -87,7 +96,7 @@ export class TopbarComponent implements OnInit{
 
     if (window.innerWidth < 961) {
       this.items.push({
-        label: 'Social',
+        label: 'SOCIAL',
         items: [
           {
             label: 'Facebook',
