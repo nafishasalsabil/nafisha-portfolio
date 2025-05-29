@@ -23,7 +23,8 @@
       "Angular",
       "PrimeNG",
       "RxJS",
-      "Bootstrap"
+      "Bootstrap",
+      "ReCaptcha"
     ]
   },
   {
@@ -38,20 +39,21 @@
       "REST API",
       "PrimeNG",
       "Google Maps API",
-      "Live Location"
+      "Live Location",
+      "ReCaptcha"
     ]
   },
   {
     "id": 4,
     "img": "edcr.png",
-    "label": "EDCR(Electronic Daily Call Report)",
+    "label": "EDCR (Electronic Daily Call Report)",
     "category": "Professional Work",
-    "description": "EDCR is a digital platform for field force to log daily calls, customer visits, and product detailing activities. Built as a progressive web app (PWA), it ensures offline data capture and syncing with Firebase. The app simplifies territory management, compliance tracking, and performance logging.",
+    "description": "EDCR is a renovated internal system developed for Square Pharmaceuticals, supporting medical representatives in their daily operations. The platform streamlines territory and role management, customer visit logging, and activity tracking. It includes modules for tour planning, work planning, DICOR data handling, expense and bill management, and centralized reporting. The application enhances operational efficiency and ensures compliance with organizational workflows.",
     "technologies": [
       "Angular",
-      "Firebase",
-      "Firestore",
-      "PWA"
+      "PrimeNG",
+      "Tailwind CSS",
+      "Spring Boot"
     ]
   },
   {
@@ -62,7 +64,9 @@
     "description": "MRS is a medical representative scheduling and reporting tool that helps align field visits with sales targets. It includes automated scheduling, visit logging, and summary dashboards. The project simplifies field operations and ensures accountability through structured activity tracking.",
     "technologies": [
       "Angular",
-      "Bootstrap",
+      "PrimeNG",
+      "Tailwind CSS",
+      "Spring Boot",
       "Node.js"
     ]
   },
@@ -71,12 +75,11 @@
     "img": "auth.png",
     "label": "Central Admin Panel",
     "category": "Professional Work",
-    "description": "The Central Admin Panel unifies multiple internal tools under a single administrative dashboard for Square Health. It features role-based management, user impersonation, audit logs, and modular integration with different service platforms. The panel was designed to reduce administrative overhead and improve platform governance.",
+    "description": "The Central Admin Panel unifies multiple internal tools under a single administrative dashboard for all the existing health-tech projects. It features role-based management, user impersonation, audit logs, and modular integration with different service platforms. The panel was designed to reduce administrative overhead and improve platform governance.",
     "technologies": [
       "Angular",
       "Tailwind",
       "PrimeNG",
-      "Keycloak",
       "REST API"
     ]
   },
@@ -85,7 +88,7 @@
     "img": "mullar.png",
     "label": "Mullar Tex Ltd.",
     "category": "Freelance",
-    "description": "This freelance project involved developing a responsive company website for a Bangladeshi textile manufacturer. The site includes a catalog, inquiry form, and content management interface for easy product updates. Focus was given to clean UI and mobile-first design principles.",
+    "description": "This freelance project involved developing a responsive company website for a textile manufacturer. The site includes a catalog, inquiry form, and content management interface for easy product updates. Focus was given to clean UI and mobile-first design principles.",
     "technologies": [
       "Angular",
       "PrimeNG",
@@ -97,9 +100,9 @@
   {
     "id": 9,
     "img": "grip.png",
-    "label": "Product Logos(The Hair Gel)",
+    "label": "Product Logos (The Hair Gel)",
     "category": "Freelance",
-    "description": "A creative freelance project to design logos and product branding for a personal care product line. Deliverables included multiple logo variants, label layouts, and packaging mockups. Tools like Illustrator and Photoshop were used to maintain professional visual identity.",
+    "description": "Designed a set of product logos for a personal care line as part of a freelance engagement. The focus was on creating a clean and market-aligned visual identity using Illustrator, Photoshop, and Canva.",
     "technologies": [
       "Canva",
       "Illustrator",
@@ -111,7 +114,7 @@
     "img": "careinvoice.png",
     "label": "CareInvoice",
     "category": "Personal Projects",
-    "description": "CareInvoice is a self-initiated SaaS project that automates invoice generation for small clinics and healthcare startups. It supports Stripe-based payments, client management, and email-based invoice dispatch. The UI was designed with simplicity in mind, using Tailwind and Firebase for backend support.",
+    "description": "CareInvoice is a self-initiated SaaS project that automates invoice generation for hospitals, clinics and healthcare startups. It supports Stripe-based payments, client management, appointments and email-based invoice dispatch. The UI was designed with simplicity in mind, using SpringBoot for backend support.",
     "technologies": [
       "Angular",
       "Bootstrap",
@@ -123,7 +126,7 @@
     "img": "clique.png",
     "label": "Clique",
     "category": "Personal Projects",
-    "description": "Clique is a prototype of a niche social platform for building closed interest-based communities. Users can join groups, post updates, and collaborate on private threads. Built as a MERN stack application, the project explored identity handling and access control mechanisms.",
+    "description": "Clique is a frontend clone inspired by Reddit, built to simulate core features such as post feeds, upvoting, threaded comments, and category-based content grouping. The project focuses on content hierarchy, responsive layout, and interactive UI patterns typical of social discussion platforms.",
     "technologies": [
       "React",
       "Node.js",
@@ -136,11 +139,11 @@
     "img": "cassette.png",
     "label": "Cassette",
     "category": "Personal Projects",
-    "description": "Cassette is a frontend clone of a modern music streaming interface, styled to mimic apps like Spotify. It showcases responsive layouting, search/filtering, and dynamic theming. The app consumes Spotify APIs to simulate a real music browsing experience.",
+    "description": "Cassette is a podcast website prototype inspired by the Criminal podcast platform. It features episode-based browsing, audio playback integration, and a clean, focused design for content-driven storytelling. Built using the MERN stack, it includes basic content management and user authentication capabilities.",
     "technologies": [
-     "HTML",
-     "CSS",
-     "Firebase"
+      "HTML",
+      "CSS",
+      "Firebase"
     ]
   },
   {
@@ -148,7 +151,7 @@
     "img": "chalkboard.png",
     "label": "Chalkboard",
     "category": "Personal Projects",
-    "description": "Chalkboard is an experimental web app for collaborative whiteboarding and virtual classroom sessions. It features real-time canvas drawing using WebSockets and interactive annotation tools. Built with Next.js and Canvas API, it served as a testbed for synchronous visual collaboration.",
+    "description": "Chalkboard is a role-based Android application designed to support both teachers and tutors in managing their academic activities. Users can register as a teacher, tutor, or both, and access personalized dashboards featuring classroom organization, note management, scheduling, and career tracking. Tutors have access to a dedicated community feed for posting and discovering tutoring opportunities, including location, rates, and availability. The platform also includes an integrated one-to-one chat system to facilitate direct communication between users. The app is backed by Firebase for authentication, data storage, and real-time messaging.",
     "technologies": [
       "Android Studio",
       "Java",

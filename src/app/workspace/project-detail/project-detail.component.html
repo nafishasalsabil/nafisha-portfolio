@@ -5,11 +5,11 @@
   >
     <h2 class="text-3xl font-medium text-slate-50">{{ project?.label }}</h2>
     <p-breadcrumb
+      [home]="home"
+      [model]="items"
+      [style]="{ background: 'var(--breadcrumb-bg)', borderRadius: '7px' }"
       class="max-w-full"
       styleClass="text-slate-100"
-      [model]="items"
-      [home]="home"
-      [style]="{ background: 'var(--breadcrumb-bg)', borderRadius: '7px' }"
     />
   </div>
 
@@ -21,7 +21,7 @@
         {{ project?.description }}
       </p>
 
-      <div style="background-color: var(--topbar-color)" class="my-6 p-4 rounded-md">
+      <div class="my-6 p-4 rounded-md" style="background-color: var(--topbar-color)">
         <h3 class="text-2xl font-medium mb-2">Technologies Used</h3>
         <p-divider></p-divider>
         <p class="leading-relaxed tracking-wide text-base md:text-lg text-gray-600">
@@ -33,10 +33,10 @@
     <!-- Image Column -->
     <div class="w-full md:w-1/2 px-2">
       <p-image
-        [src]="'assets/images/projects/' + project?.img"
         [preview]="true"
+        [src]="'assets/images/projects/' + project?.img"
         alt="Image"
-        class="w-full max-h-[30rem] object-contain"
+        class="w-full max-h-[30rem] object-contain "
       >
         <ng-template #indicator>
           <i class="pi pi-search"></i>
@@ -45,15 +45,16 @@
           <img
             [src]="'assets/images/projects/' + project?.img"
             alt="image"
-            class="w-full object-contain"
+            class="w-full object-contain p-3 border-4 rounded-md"
+            style="border-color: var(--card-border)"
           />
         </ng-template>
-        <ng-template #preview let-style="style" let-previewCallback="previewCallback">
+        <ng-template #preview let-previewCallback="previewCallback" let-style="style">
           <img
-            [src]="'assets/images/projects/' + project?.img"
-            alt="image"
-            [style]="style"
             (click)="previewCallback()"
+            [src]="'assets/images/projects/' + project?.img"
+            [style]="style"
+            alt="image"
           />
         </ng-template>
       </p-image>

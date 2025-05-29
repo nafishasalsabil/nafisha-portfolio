@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Timeline} from 'primeng/timeline';
 import {Button} from 'primeng/button';
-import {NgClass} from '@angular/common';
-import {ProgressBar} from 'primeng/progressbar';
+import {NgClass, NgStyle} from '@angular/common';
 
 @Component({
   selector: 'app-resume',
@@ -10,16 +9,19 @@ import {ProgressBar} from 'primeng/progressbar';
     Timeline,
     Button,
     NgClass,
-    ProgressBar
+    NgStyle
   ],
   templateUrl: './resume.component.html',
   styleUrl: './resume.component.scss'
 })
-export class ResumeComponent implements OnInit {
+export class ResumeComponent implements OnInit, AfterViewInit {
   events: any[];
   skillCategories: any[] = [];
   selectedCategory: any = null;
   screenWidth: number = window.innerWidth;
+  skillLevels = ['Working Knowledge', 'Competent', 'Highly Skilled', 'Expert'];
+  animate = false;
+  @ViewChild('skillSection', {static: false}) skillSectionRef!: ElementRef;
   protected readonly window = window;
 
   constructor() {
@@ -57,47 +59,47 @@ export class ResumeComponent implements OnInit {
         color: '#F59E0B'
       }
     ];
+
     this.skillCategories = [
       {
         label: 'Web Development',
         skills: [
-          {name: 'Angular', value: 90, displayValue: 0},
-          {name: 'React', value: 65, displayValue: 0},
-          {name: 'TypeScript', value: 85, displayValue: 0},
-          {name: 'JavaScript', value: 80, displayValue: 0},
-          {name: 'PrimeNG', value: 90, displayValue: 0},
-          {name: 'Tailwind CSS', value: 75, displayValue: 0}
+          {name: 'Angular', level: 3},
+          {name: 'TypeScript', level: 3},
+          {name: 'JavaScript', level: 2},
+          {name: 'PrimeNG', level: 3},
+          {name: 'Tailwind CSS', level: 2},
+          {name: 'React', level: 2},
         ]
       },
       {
         label: 'UI/UX & Design',
         skills: [
-          {name: 'Figma', value: 85, displayValue: 0},
-          {name: 'Canva', value: 80, displayValue: 0},
-          {name: 'Adobe Illustrator', value: 70, displayValue: 0},
-          {name: 'Pixel-Perfect Execution', value: 90, displayValue: 0}
+          {name: 'Figma', level: 2},
+          {name: 'Canva', level: 2},
+          {name: 'Adobe Illustrator', level: 1},
+          {name: 'Pixel-Perfect Execution', level: 3}
         ]
       },
       {
         label: 'Backend & DevOps',
         skills: [
-          {name: 'Laravel (PHP)', value: 80, displayValue: 0},
-          {name: 'Firebase', value: 70, displayValue: 0},
-          {name: 'Node.js', value: 75, displayValue: 0},
-          {name: 'Spring Boot (basic)', value: 70, displayValue: 0},
-          {name: 'Docker', value: 50, displayValue: 0},
-          {name: 'Git & Git Platforms', value: 85, displayValue: 0}
+          {name: 'Laravel (PHP)', level: 2},
+          {name: 'Firebase', level: 2},
+          {name: 'Node.js', level: 1},
+          {name: 'Spring Boot (basic)', level: 1},
+          {name: 'Docker', level: 1},
+          {name: 'Git & Git Platforms', level: 3}
         ]
       },
       {
         label: 'Mobile Development',
         skills: [
-          {name: 'iOS (Xcode)', value: 40, displayValue: 0},
-          {name: 'Android (Java)', value: 75, displayValue: 0}
+          {name: 'iOS (Xcode)', level: 1},
+          {name: 'Android (Java)', level: 2}
         ]
       }
     ];
-
 
     this.selectedCategory = this.skillCategories[0];
 
@@ -105,27 +107,29 @@ export class ResumeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.animateSkills(this.selectedCategory.skills);
     window.addEventListener('resize', () => {
       this.screenWidth = window.innerWidth;
     });
   }
 
-  selectCategory(category: any) {
-    this.selectedCategory = category;
-    this.animateSkills(category.skills);
+  ngAfterViewInit(): void {
+    if (!this.skillSectionRef) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          this.animate = true;
+          observer.unobserve(entry.target);
+        }
+      },
+      {threshold: 0.3}
+    );
+
+    observer.observe(this.skillSectionRef.nativeElement);
   }
 
-  animateSkills(skills: any[]) {
-    for (let skill of skills) {
-      skill.displayValue = 0;
-      const interval = setInterval(() => {
-        if (skill.displayValue < skill.value) {
-          skill.displayValue += 1;
-        } else {
-          clearInterval(interval);
-        }
-      }, 0);
-    }
+  selectCategory(category: any) {
+    this.selectedCategory = category;
   }
+
 }
