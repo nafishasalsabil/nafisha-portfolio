@@ -42,19 +42,11 @@ export class ResumeComponent implements OnInit {
       },
       {
         date: '2023 - 2024',
-        title: 'Frontend Developer (Intern)',
+        title: 'Software Engineer (Intern)',
         company: 'Square Health Ltd.',
         description: 'Worked on the patient portal, doctor web, and admin dashboard. Gained hands-on experience with reCAPTCHA integration, bulk upload modules, and form-driven UIs. Collaborated with backend and QA for rapid iteration.',
         icon: 'pi pi-circle',
         color: '#10B981'
-      },
-      {
-        date: '2020 – 2023',
-        title: 'Student Developer (Unpaid)',
-        company: 'University Projects',
-        description: 'Worked on small-scale full-stack projects and academic tools during university. Focused on learning Angular, REST APIs, and UI/UX principles.',
-        icon: 'pi pi-circle',
-        color: '#F59E0B'
       }
     ];
     this.skillCategories = [

@@ -28,6 +28,15 @@
           {{ project?.technologies?.join(', ') }}
         </p>
       </div>
+
+      @if(project?.live){
+        <p-button
+          label="Go Live"
+          outlined
+          icon="pi pi-send"
+          (onClick)="goToLiveUrl(project?.live)"
+        ></p-button>
+      }
     </div>
 
     <!-- Image Column -->
