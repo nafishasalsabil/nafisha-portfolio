@@ -11,7 +11,8 @@
       "Bootstrap",
       "REST API",
       "Typescript"
-    ]
+    ],
+    "live": ""
   },
   {
     "id": 2,
@@ -23,8 +24,10 @@
       "Angular",
       "PrimeNG",
       "RxJS",
-      "Bootstrap"
-    ]
+      "Bootstrap",
+      "ReCaptcha"
+    ],
+    "live": ""
   },
   {
     "id": 3,
@@ -38,8 +41,10 @@
       "REST API",
       "PrimeNG",
       "Google Maps API",
-      "Live Location"
-    ]
+      "Live Location",
+      "ReCaptcha"
+    ],
+    "live": ""
   },
   {
     "id": 4,
@@ -49,10 +54,11 @@
     "description": "EDCR is a digital platform for field force to log daily calls, customer visits, and product detailing activities. Built as a progressive web app (PWA), it ensures offline data capture and syncing with Firebase. The app simplifies territory management, compliance tracking, and performance logging.",
     "technologies": [
       "Angular",
-      "Firebase",
-      "Firestore",
-      "PWA"
-    ]
+      "PrimeNG",
+      "Tailwind CSS",
+      "Spring Boot"
+    ],
+    "live": ""
   },
   {
     "id": 5,
@@ -64,7 +70,8 @@
       "Angular",
       "Bootstrap",
       "Node.js"
-    ]
+    ],
+    "live": ""
   },
   {
     "id": 6,
@@ -78,7 +85,8 @@
       "PrimeNG",
       "Keycloak",
       "REST API"
-    ]
+    ],
+    "live": ""
   },
   {
     "id": 7,
@@ -92,7 +100,8 @@
       "Bootstrap",
       "Laravel",
       "MySQL"
-    ]
+    ],
+    "live": "https://mullar-tex.netlify.app/"
   },
   {
     "id": 9,
@@ -104,7 +113,8 @@
       "Canva",
       "Illustrator",
       "Photoshop"
-    ]
+    ],
+    "live": ""
   },
   {
     "id": 10,
@@ -116,7 +126,8 @@
       "Angular",
       "Bootstrap",
       "Spring Boot"
-    ]
+    ],
+    "live": ""
   },
   {
     "id": 11,
@@ -129,7 +140,8 @@
       "Node.js",
       "Express",
       "MongoDB"
-    ]
+    ],
+    "live": ""
   },
   {
     "id": 12,
@@ -141,7 +153,8 @@
      "HTML",
      "CSS",
      "Firebase"
-    ]
+    ],
+    "live": ""
   },
   {
     "id": 13,
@@ -153,6 +166,35 @@
       "Android Studio",
       "Java",
       "Firebase"
-    ]
+    ],
+    "live": ""
+  },
+  {
+    "id": 14,
+    "img": "ui-tool.png",
+    "label": "UI Prompt Tool",
+    "category": "Personal Projects",
+    "description": "UI Prompt Tool is a React-based application that transforms natural language prompts into live-renderable HTML and CSS components. Built with Vite and Tailwind CSS v4, the tool integrates the OpenAI Chat API to convert user intents into frontend code. It features a minimalistic design, real-time preview, and deployability on Netlify, aiming to simplify UI prototyping and developer workflows.",
+    "technologies": [
+      "React",
+      "Vite",
+      "Tailwind CSS v4",
+      "OpenAI Chat API"
+    ],
+    "live": "https://ui-prompt-tool.netlify.app/"
+  },
+  {
+    "id": 15,
+    "img": "figma.png",
+    "label": "Prompt-to-Figma Tool",
+    "category": "Personal Projects",
+    "description": "Prompt-to-Figma Tool enables real-time conversion of UI descriptions into Figma-compatible JSON or frontend components. Developed using React and Tailwind CSS v4, it leverages OpenAI Chat API to interpret natural language prompts and generate design-ready code. The tool is ideal for bridging design-development workflows and streamlining rapid prototyping.",
+    "technologies": [
+      "React",
+      "Tailwind CSS v4",
+      "OpenAI Chat API"
+    ],
+    "live": "https://figma-ui-generator.netlify.app/"
   }
+
 ]
