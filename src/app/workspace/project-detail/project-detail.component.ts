@@ -5,13 +5,15 @@ import {Breadcrumb} from 'primeng/breadcrumb';
 import {MenuItem} from 'primeng/api';
 import {Divider} from 'primeng/divider';
 import {Image} from 'primeng/image';
+import {Button} from 'primeng/button';
 
 @Component({
   selector: 'app-project-detail',
   imports: [
     Breadcrumb,
     Divider,
-    Image
+    Image,
+    Button
   ],
   templateUrl: './project-detail.component.html',
   styleUrl: './project-detail.component.scss'
@@ -54,5 +56,11 @@ export class ProjectDetailComponent implements OnInit {
         ];
       }
     })
+  }
+
+  goToLiveUrl(url) {
+    if (url) {
+      window.open(url, '_blank');
+    }
   }
 }
