@@ -1,71 +1,334 @@
-<div class="parent px-4 sm:px-6 lg:px-8" style="background-color: var(--topbar-color)">
-  <div
-    class="flex flex-col justify-center items-center gap-6 h-[25rem] w-full bg-cover bg-center bg-no-repeat text-center px-4"
-    style="background-image: url('assets/images/detail.jpg');"
+@if (notFound) {
+  <div class="not-found-container">
+    <div class="not-found-content">
+      <h1>Project Not Found</h1>
+      <p>The project you're looking for doesn't exist.</p>
+      <p-button
+        label="Back to Projects"
+        icon="pi pi-arrow-left"
+        [routerLink]="['/']"
+        [fragment]="'projects'"
+      ></p-button>
+    </div>
+  </div>
+} @else if (project) {
+  <!-- Hero Header - Premium Split Layout -->
+  <div 
+    class="project-hero"
   >
-    <h2 class="text-3xl font-medium text-slate-50">{{ project?.label }}</h2>
-    <p-breadcrumb
-      class="max-w-full"
-      styleClass="text-slate-100"
-      [model]="items"
-      [home]="home"
-      [style]="{ background: 'var(--breadcrumb-bg)', borderRadius: '7px' }"
-    />
-  </div>
-
-  <div class="flex flex-col md:flex-row max-w-7xl mx-auto my-10 gap-8 px-2">
-    <div class="w-full md:w-1/2 py-3">
-      <h3 class="text-2xl font-medium mb-2">{{ project?.label }}</h3>
-      <p-divider></p-divider>
-      <p class="leading-relaxed tracking-wide text-base md:text-lg text-gray-600">
-        {{ project?.description }}
-      </p>
-
-      <div style="background-color: var(--topbar-color)" class="my-6 p-4 rounded-md">
-        <h3 class="text-2xl font-medium mb-2">Technologies Used</h3>
-        <p-divider></p-divider>
-        <p class="leading-relaxed tracking-wide text-base md:text-lg text-gray-600">
-          {{ project?.technologies?.join(', ') }}
-        </p>
+    <div 
+      class="hero-background-blur"
+      [style.background-image]="'url(' + getHeroPreviewImage() + ')'"
+    ></div>
+    <div class="hero-gradient-overlay"></div>
+    <div class="hero-container">
+      <!-- Left Column: Content -->
+      <div class="hero-content-column">
+        <p-breadcrumb
+          class="hero-breadcrumb"
+          [model]="items"
+          [home]="home"
+          data-hero-element="breadcrumb"
+        />
+        
+        <h1 class="hero-title" data-hero-element="title">{{ project.label }}</h1>
+        
+        <p class="hero-tagline" data-hero-element="tagline">{{ getTagline() }}</p>
+        
+        @if (project.description && project.description.length > 80) {
+          <p class="hero-description" data-hero-element="description">{{ getShortenedDescription() }}</p>
+        }
+        
+        <!-- Primary CTA Row -->
+        <div class="hero-cta-row" data-hero-element="ctas">
+          <div class="hero-cta-group">
+            @if (project.live) {
+              <p-button
+                label="Live Demo"
+                icon="pi pi-external-link"
+                (onClick)="goToLiveUrl(project.live!)"
+                styleClass="hero-cta hero-cta-primary"
+              ></p-button>
+            }
+            @if (project.github) {
+              <p-button
+                label="GitHub"
+                icon="pi pi-github"
+                (onClick)="goToGithub(project.github!)"
+                outlined
+                styleClass="hero-cta hero-cta-secondary"
+              ></p-button>
+            }
+          </div>
+          <a
+            [routerLink]="['/']"
+            [fragment]="'projects'"
+            class="hero-back-link"
+          >
+            ← Back to Projects
+          </a>
+        </div>
+        
+        <!-- Quick Facts Row -->
+        <div class="hero-quick-facts" data-hero-element="facts">
+          @for (fact of getQuickFacts(); track fact) {
+            <span class="hero-fact-chip">{{ fact }}</span>
+          }
+        </div>
       </div>
-
-      @if(project?.live){
-        <p-button
-          label="Go Live"
-          outlined
-          icon="pi pi-send"
-          (onClick)="goToLiveUrl(project?.live)"
-        ></p-button>
-      }
-    </div>
-
-    <!-- Image Column -->
-    <div class="w-full md:w-1/2 px-2">
-      <p-image
-        [src]="'assets/images/projects/' + project?.img"
-        [preview]="true"
-        alt="Image"
-        class="w-full max-h-[30rem] object-contain"
-      >
-        <ng-template #indicator>
-          <i class="pi pi-search"></i>
-        </ng-template>
-        <ng-template #image>
+      
+      <!-- Right Column: Preview -->
+      <div class="hero-preview-column" data-hero-element="preview">
+        <div class="hero-preview-frame">
+          <div class="preview-overlay-label">Preview</div>
+          <div class="preview-overlay-ctas">
+            @if (project.live) {
+              <button
+                type="button"
+                class="preview-overlay-cta"
+                (click)="goToLiveUrl(project.live!); $event.stopPropagation()"
+                (keydown.enter)="goToLiveUrl(project.live!); $event.stopPropagation()"
+                [attr.aria-label]="'Open Live Demo'"
+              >
+                <i class="pi pi-external-link"></i>
+                <span>Open Live</span>
+              </button>
+            }
+            @if (project.github) {
+              <button
+                type="button"
+                class="preview-overlay-cta"
+                (click)="goToGithub(project.github!); $event.stopPropagation()"
+                (keydown.enter)="goToGithub(project.github!); $event.stopPropagation()"
+                [attr.aria-label]="'Open GitHub'"
+              >
+                <i class="pi pi-github"></i>
+                <span>Open GitHub</span>
+              </button>
+            }
+          </div>
           <img
-            [src]="'assets/images/projects/' + project?.img"
-            alt="image"
-            class="w-full object-contain"
+            [src]="getHeroPreviewImage()"
+            [alt]="project.label + ' preview'"
+            class="preview-image"
           />
-        </ng-template>
-        <ng-template #preview let-style="style" let-previewCallback="previewCallback">
-          <img
-            [src]="'assets/images/projects/' + project?.img"
-            alt="image"
-            [style]="style"
-            (click)="previewCallback()"
-          />
-        </ng-template>
-      </p-image>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+
+  <!-- Main Content -->
+  <div class="project-content">
+    <!-- Media Gallery -->
+    <section class="media-section" data-scroll-reveal>
+      @if (project.screenshots && project.screenshots.length >= 2) {
+        <div class="media-gallery">
+          <div class="main-preview-wrapper">
+            <div class="browser-frame">
+              <div class="browser-header">
+                <div class="browser-dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <div class="browser-content">
+                <img
+                  #mainPreview
+                  [src]="getMainPreviewImage()"
+                  [alt]="project.label + ' screenshot ' + (selectedScreenshotIndex + 1)"
+                  class="main-preview-image"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="thumbnail-strip">
+            @for (screenshot of project.screenshots; track $index) {
+              <button
+                type="button"
+                class="thumbnail-item"
+                [class.active]="selectedScreenshotIndex === $index"
+                (click)="selectScreenshot($index)"
+                (keydown.enter)="selectScreenshot($index)"
+                [attr.aria-label]="'View screenshot ' + ($index + 1)"
+              >
+                <img
+                  [src]="getThumbnailImage(screenshot)"
+                  [alt]="'Thumbnail ' + ($index + 1)"
+                  class="thumbnail-image"
+                />
+              </button>
+            }
+          </div>
+        </div>
+      } @else if (project.screenshots && project.screenshots.length === 1) {
+        <div class="media-gallery">
+          <div class="main-preview-wrapper">
+            <div class="browser-frame">
+              <div class="browser-header">
+                <div class="browser-dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <div class="browser-content">
+                <img
+                  [src]="getThumbnailImage(project.screenshots[0])"
+                  [alt]="project.label"
+                  class="main-preview-image"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      } @else {
+        <div class="media-gallery">
+          <div class="main-preview-wrapper">
+            <div class="browser-frame">
+              <div class="browser-header">
+                <div class="browser-dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <div class="browser-content">
+                <img
+                  [src]="'assets/images/projects/' + project.img"
+                  [alt]="project.label"
+                  class="main-preview-image"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </section>
+
+    <!-- Quick Facts Strip -->
+    <section class="quick-facts" data-scroll-reveal>
+      <div class="fact-item">
+        <span class="fact-label">Role</span>
+        <span class="fact-value">{{ getRole() }}</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Stack</span>
+        <span class="fact-value">{{ (project.technologies || []).slice(0, 3).join(', ') }}</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Deployment</span>
+        <span class="fact-value">{{ getDeploymentStatus() }}</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Category</span>
+        <span class="fact-value">{{ project.category }}</span>
+      </div>
+    </section>
+
+    <!-- Case Study Sections -->
+    <div class="case-study-sections">
+      <!-- Key Highlights -->
+      @if (getHighlights().length > 0) {
+        <section class="case-section" data-scroll-reveal>
+          <h2 class="section-title">Key Highlights</h2>
+          <ul class="highlights-list">
+            @for (highlight of getHighlights(); track $index) {
+              <li class="highlight-item">{{ highlight }}</li>
+            }
+          </ul>
+        </section>
+      }
+
+      <!-- Challenges & Decisions -->
+      @if (project.challenges && project.challenges.length > 0) {
+        <section class="case-section" data-scroll-reveal>
+          <h2 class="section-title">Challenges & Decisions</h2>
+          <ul class="challenges-list">
+            @for (challenge of project.challenges; track $index) {
+              <li class="challenge-item">{{ challenge }}</li>
+            }
+          </ul>
+        </section>
+      }
+
+      <!-- Technologies Used -->
+      <section class="case-section" data-scroll-reveal>
+        <h2 class="section-title">Technologies Used</h2>
+        <div class="technologies-grid">
+          @for (tech of getVisibleTechnologies(); track tech) {
+            <span class="tech-chip">{{ tech }}</span>
+          }
+          @if (getRemainingTechCount() > 0) {
+            <span class="tech-chip tech-chip-overflow">+{{ getRemainingTechCount() }}</span>
+          }
+        </div>
+      </section>
+    </div>
+
+    <!-- Next/Previous Navigation -->
+    <section class="project-navigation" data-scroll-reveal>
+      <div class="nav-container">
+        @if (previousProject) {
+          <button
+            type="button"
+            class="nav-card nav-previous"
+            (click)="navigateToProject(previousProject)"
+            (keydown.enter)="navigateToProject(previousProject)"
+            [attr.aria-label]="'Previous project: ' + previousProject.label"
+          >
+            <!-- Left Zone: Content -->
+            <div class="nav-content-zone">
+              <span class="nav-label">Previous project</span>
+              <div class="nav-title-wrapper">
+                <h3 class="nav-title">{{ previousProject.label }}</h3>
+                <div class="nav-arrow nav-arrow-left">
+                  <i class="pi pi-arrow-left"></i>
+                </div>
+              </div>
+              <p class="nav-meta">{{ getNavMetaLine(previousProject) }}</p>
+            </div>
+            <!-- Right Zone: Preview -->
+            <div class="nav-preview-zone">
+              <div class="nav-preview-overlay"></div>
+              <img
+                [src]="getNavPreviewImage(previousProject)"
+                [alt]="previousProject.label"
+                class="nav-preview-image"
+              />
+            </div>
+          </button>
+        } @else {
+          <div class="nav-card nav-placeholder"></div>
+        }
+
+        @if (nextProject) {
+          <button
+            type="button"
+            class="nav-card nav-next"
+            (click)="navigateToProject(nextProject)"
+            (keydown.enter)="navigateToProject(nextProject)"
+            [attr.aria-label]="'Next project: ' + nextProject.label"
+          >
+            <!-- Left Zone: Content -->
+            <div class="nav-content-zone">
+              <span class="nav-label">Next project</span>
+              <div class="nav-title-wrapper">
+                <h3 class="nav-title">{{ nextProject.label }}</h3>
+                <div class="nav-arrow nav-arrow-right">
+                  <i class="pi pi-arrow-right"></i>
+                </div>
+              </div>
+              <p class="nav-meta">{{ getNavMetaLine(nextProject) }}</p>
+            </div>
+            <!-- Right Zone: Preview -->
+            <div class="nav-preview-zone">
+              <div class="nav-preview-overlay"></div>
+              <img
+                [src]="getNavPreviewImage(nextProject)"
+                [alt]="nextProject.label"
+                class="nav-preview-image"
+              />
+            </div>
+          </button>
+        } @else {
+          <div class="nav-card nav-placeholder"></div>
+        }
+      </div>
+    </section>
+  </div>
+}
