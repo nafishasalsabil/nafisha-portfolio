@@ -2,18 +2,21 @@ import {Component, OnInit} from '@angular/core';
 import {Button} from 'primeng/button';
 import {CentralService} from '../../shared/central-service/central.service';
 import {RouterLink} from '@angular/router';
+import {ProjectSpotlightComponent} from './project-spotlight/project-spotlight.component';
 
 @Component({
   selector: 'app-projects',
   imports: [
     Button,
-    RouterLink
+    RouterLink,
+    ProjectSpotlightComponent
   ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'
 })
-export class ProjectsComponent implements OnInit{
-  projects :any[] = [];
+export class ProjectsComponent implements OnInit {
+  projects: any[] = [];
+  spotlightProject: any = null;
   filters = [
     {
       label: 'All'
@@ -21,24 +24,67 @@ export class ProjectsComponent implements OnInit{
     {
       label: 'Professional Work'
     },
+    
+    {
+      label: 'Personal Projects'
+    },
     {
       label: 'Freelance'
     },
-    {
-      label: 'Personal Projects'
-    }
   ]
   selectedFilter = this.filters[0];
   displayCount = 6;
 
   constructor(private service: CentralService) { }
-    ngOnInit(): void {
-      this.service.getProjects().subscribe({
-        next: (data:any) => {
-          this.projects = data;
-        }
-      })
+  
+  ngOnInit(): void {
+    // Projects are already sorted by addedAt DESC from service
+    this.service.getProjects().subscribe({
+      next: (data: any) => {
+        this.projects = data; // Already sorted by addedAt DESC
+        this.spotlightProject = this.selectSpotlightProject(data);
+      }
+    })
+  }
+
+  /**
+   * Selects the spotlight project based on priority:
+   * 1. If any project has spotlight: true, pick that (if multiple, newest by addedAt)
+   * 2. Else show newest by addedAt
+   * 3. Else fallback to highest id
+   */
+  selectSpotlightProject(projects: any[]): any {
+    if (!projects || projects.length === 0) return null;
+
+    // Filter projects with spotlight flag
+    const spotlightProjects = projects.filter(p => p.spotlight === true);
+    
+    if (spotlightProjects.length > 0) {
+      // If multiple spotlight projects, pick newest by addedAt
+      return this.getNewestByDate(spotlightProjects);
     }
+
+    // Filter projects with addedAt dates
+    const projectsWithDate = projects.filter(p => p.addedAt);
+    
+    if (projectsWithDate.length > 0) {
+      // Show newest by addedAt
+      return this.getNewestByDate(projectsWithDate);
+    }
+
+    // Fallback to highest id
+    return projects.reduce((prev, current) => 
+      (prev.id > current.id) ? prev : current
+    );
+  }
+
+  private getNewestByDate(projects: any[]): any {
+    return projects.reduce((newest, current) => {
+      const currentDate = current.addedAt ? new Date(current.addedAt).getTime() : 0;
+      const newestDate = newest.addedAt ? new Date(newest.addedAt).getTime() : 0;
+      return currentDate > newestDate ? current : newest;
+    });
+  }
   selectFilter(filter: any) {
     this.selectedFilter = filter;
     this.displayCount = 6;

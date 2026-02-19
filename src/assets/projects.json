@@ -12,7 +12,11 @@
       "REST API",
       "Typescript"
     ],
-    "live": ""
+    "live": "",
+    "slug": "jotno-admin-panel-org",
+    "addedAt": "2023-03-15",
+    "role": "End-to-end",
+    "status": "Live"
   },
   {
     "id": 2,
@@ -27,7 +31,11 @@
       "Bootstrap",
       "ReCaptcha"
     ],
-    "live": ""
+    "live": "",
+    "slug": "jotno-doctor-web",
+    "addedAt": "2023-05-20",
+    "role": "End-to-end",
+    "status": "Live"
   },
   {
     "id": 3,
@@ -44,7 +52,11 @@
       "Live Location",
       "ReCaptcha"
     ],
-    "live": ""
+    "live": "",
+    "slug": "agrovet",
+    "addedAt": "2023-07-10",
+    "role": "End-to-end",
+    "status": "Live"
   },
   {
     "id": 4,
@@ -58,7 +70,11 @@
       "Tailwind CSS",
       "Spring Boot"
     ],
-    "live": ""
+    "live": "",
+    "slug": "edcr-electronic-daily-call-report",
+    "addedAt": "2023-09-05",
+    "role": "End-to-end",
+    "status": "Live"
   },
   {
     "id": 5,
@@ -71,7 +87,11 @@
       "Bootstrap",
       "Node.js"
     ],
-    "live": ""
+    "live": "",
+    "slug": "mrs",
+    "addedAt": "2023-10-18",
+    "role": "End-to-end",
+    "status": "Live"
   },
   {
     "id": 6,
@@ -86,7 +106,11 @@
       "Keycloak",
       "REST API"
     ],
-    "live": ""
+    "live": "",
+    "slug": "central-admin-panel",
+    "addedAt": "2023-11-22",
+    "role": "End-to-end",
+    "status": "Live"
   },
   {
     "id": 7,
@@ -101,7 +125,11 @@
       "Laravel",
       "MySQL"
     ],
-    "live": "https://mullar-tex.netlify.app/"
+    "live": "https://mullar-tex.netlify.app/",
+    "slug": "mullar-tex-ltd",
+    "addedAt": "2024-01-12",
+    "role": "End-to-end",
+    "status": "Live"
   },
   {
     "id": 9,
@@ -114,7 +142,11 @@
       "Illustrator",
       "Photoshop"
     ],
-    "live": ""
+    "live": "",
+    "slug": "product-logos-the-hair-gel",
+    "addedAt": "2024-02-08",
+    "role": "Design",
+    "status": "Completed"
   },
   {
     "id": 10,
@@ -127,21 +159,34 @@
       "Bootstrap",
       "Spring Boot"
     ],
-    "live": ""
+    "live": "",
+    "slug": "careinvoice",
+    "addedAt": "2024-03-20",
+    "role": "End-to-end",
+    "status": "Prototype"
   },
   {
     "id": 11,
     "img": "clique.png",
     "label": "Clique",
     "category": "Personal Projects",
-    "description": "Clique is a prototype of a niche social platform for building closed interest-based communities. Users can join groups, post updates, and collaborate on private threads. Built as a MERN stack application, the project explored identity handling and access control mechanisms.",
+    "description": "Clique is a prototype of a niche social platform for building closed interest-based communities. Users can join groups, post updates, and collaborate on private threads. The project explored identity handling and access control mechanisms.",
     "technologies": [
       "React",
-      "Node.js",
-      "Express",
-      "MongoDB"
+      "Tailwind CSS",
+      "Firebase"
     ],
-    "live": ""
+    "live": "https://reddit-like.netlify.app/",
+    "slug": "clique",
+    "addedAt": "2024-04-15",
+    "role": "End-to-end",
+    "status": "Prototype",
+    "tagline": "A niche social platform for closed interest-based communities",
+    "highlights": [
+      "Real-time group collaboration and private threads",
+      "Identity handling and access control mechanisms",
+      "Firebase-powered backend with React frontend"
+    ]
   },
   {
     "id": 12,
@@ -150,11 +195,15 @@
     "category": "Personal Projects",
     "description": "Cassette is a frontend clone of a modern music streaming interface, styled to mimic apps like Spotify. It showcases responsive layouting, search/filtering, and dynamic theming. The app consumes Spotify APIs to simulate a real music browsing experience.",
     "technologies": [
-     "HTML",
-     "CSS",
-     "Firebase"
+      "HTML",
+      "CSS",
+      "Firebase"
     ],
-    "live": ""
+    "live": "",
+    "slug": "cassette",
+    "addedAt": "2024-05-10",
+    "role": "Frontend",
+    "status": "Prototype"
   },
   {
     "id": 13,
@@ -167,7 +216,11 @@
       "Java",
       "Firebase"
     ],
-    "live": ""
+    "live": "",
+    "slug": "chalkboard",
+    "addedAt": "2024-06-18",
+    "role": "End-to-end",
+    "status": "Prototype"
   },
   {
     "id": 14,
@@ -181,7 +234,17 @@
       "Tailwind CSS v4",
       "OpenAI Chat API"
     ],
-    "live": "https://ui-prompt-tool.netlify.app/"
+    "live": "https://ui-prompt-tool.netlify.app/",
+    "slug": "ui-prompt-tool",
+    "addedAt": "2024-08-22",
+    "role": "End-to-end",
+    "status": "Live",
+    "tagline": "Transform natural language into live-renderable UI components",
+    "highlights": [
+      "OpenAI Chat API integration for code generation",
+      "Real-time preview with instant feedback",
+      "Minimalistic design optimized for developer workflows"
+    ]
   },
   {
     "id": 15,
@@ -194,7 +257,102 @@
       "Tailwind CSS v4",
       "OpenAI Chat API"
     ],
-    "live": "https://figma-ui-generator.netlify.app/"
+    "live": "https://figma-ui-generator.netlify.app/",
+    "slug": "prompt-to-figma-tool",
+    "addedAt": "2024-09-10",
+    "role": "End-to-end",
+    "status": "Live",
+    "tagline": "Bridge design and development with AI-powered UI generation",
+    "highlights": [
+      "Figma-compatible JSON generation",
+      "Real-time design-to-code conversion",
+      "Streamlined rapid prototyping workflow"
+    ]
+  },
+  {
+    "id": 16,
+    "img": "fryverse.png",
+    "label": "FryVerse",
+    "category": "Personal Projects",
+    "description": "FRYVERSE is a playful, single-page React experience that lets users explore different fry \"personalities\" and build a custom fry box by choosing a cut, seasoning, and sauce. It blends a premium dark UI with smooth GSAP-driven interactions, Lottie hero animation, and micro-UX details like badges, pairing guidance, and a \"Play & Save\" mini-game (Catch the Fries) that unlocks discounts. The result feels like a modern interactive product site—part menu, part customization flow, part arcade.",
+    "technologies": [
+      "React",
+      "Tailwind CSS v4",
+      "GSAP"
+    ],
+    "live": "https://fryverse.netlify.app/",
+    "slug": "fryverse",
+    "addedAt": "2024-12-15",
+    "spotlight": true,
+    "tagline": "A playful, interactive experience that transforms fries into a customizable adventure",
+    "highlights": [
+      "GSAP-driven animations for smooth, premium interactions",
+      "Interactive mini-game (Catch the Fries) with discount rewards",
+      "Dark UI with Lottie hero animations and micro-UX details"
+    ],
+    "role": "End-to-end",
+    "status": "Live",
+    "challenges": [
+      "Balancing performance with complex GSAP animations",
+      "Creating an engaging mini-game that feels integrated, not gimmicky",
+      "Designing a dark UI that remains accessible and readable"
+    ]
+  },
+  {
+    "id": 17,
+    "img": "inv-ter.png",
+    "label": "Investigator Terminal",
+    "category": "Personal Projects",
+    "description": "A premium, portfolio-worthy single-page case dossier interface built with Next.js, TypeScript, and Tailwind CSS. Features a modern, minimal monochrome design with scroll-driven animations and a professional investigator terminal aesthetic.",
+    "technologies": [
+      "React",
+      "Tailwind CSS",
+      "Next.js",
+      "TypeScript"
+    ],
+    "live": "https://investigator-terminal.netlify.app/",
+    "slug": "investigator-terminal",
+    "addedAt": "2024-10-15",
+    "role": "End-to-end",
+    "status": "Live",
+    "tagline": "A premium case dossier interface with terminal aesthetic",
+    "highlights": [
+      "Scroll-driven animations for immersive storytelling",
+      "Minimal monochrome design with professional aesthetic",
+      "Next.js and TypeScript for type-safe development"
+    ]
+  },
+  {
+    "id": 18,
+    "img": "fmcg.png",
+    "label": "FMCG Inventory System",
+    "category": "Personal Projects",
+    "description": "A production-grade, inventory-based ecommerce platform for FMCG (Fast-Moving Consumer Goods) categories, featuring demand tracking, ABC classification, and inventory management.",
+    "technologies": [
+      "React",
+      "Tailwind CSS",
+      "Vite",
+      "TypeScript",
+      "NestJS",
+      "PrismaORM",
+      "PostgreSQL",
+      "Docker"
+    ],
+    "live": "https://fmcg-demo-inventory.netlify.app/",
+    "slug": "fmcg-inventory-system",
+    "addedAt": "2024-11-20",
+    "role": "End-to-end",
+    "status": "Live",
+    "tagline": "Production-grade inventory management for FMCG categories",
+    "highlights": [
+      "Demand tracking and ABC classification",
+      "Full-stack TypeScript with NestJS and Prisma",
+      "Docker containerization for deployment"
+    ],
+    "challenges": [
+      "Implementing complex inventory algorithms efficiently",
+      "Managing large-scale data with PostgreSQL",
+      "Ensuring real-time updates across multiple users"
+    ]
   }
-
 ]

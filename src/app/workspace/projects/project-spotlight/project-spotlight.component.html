@@ -1,0 +1,102 @@
+@if (project) {
+  <div #spotlightContainer class="spotlight-container" data-spotlight>
+    <div class="spotlight-content">
+      <!-- Image Column -->
+      <div class="spotlight-image-wrapper" data-image tabindex="0" role="button" aria-label="View project preview">
+        <div class="image-overlay">
+          <div class="image-overlay-ctas">
+            @if (project.live) {
+              <button
+                type="button"
+                class="overlay-cta overlay-cta-primary"
+                (click)="goToLiveUrl(project.live); $event.stopPropagation()"
+                (keydown.enter)="goToLiveUrl(project.live); $event.stopPropagation()"
+                aria-label="View Live Demo"
+              >
+                <i class="pi pi-external-link"></i>
+                <span>View Live</span>
+              </button>
+            }
+            <button
+              type="button"
+              class="overlay-cta overlay-cta-secondary"
+              [routerLink]="projectRoute"
+              (click)="$event.stopPropagation()"
+              aria-label="View Details"
+            >
+              <i class="pi pi-arrow-right"></i>
+              <span>View Details</span>
+            </button>
+          </div>
+        </div>
+        <img
+          [src]="'assets/images/projects/' + project.img"
+          [alt]="project.label"
+          class="spotlight-image"
+        />
+      </div>
+
+      <!-- Content Column -->
+      <div class="spotlight-text-wrapper">
+        <!-- Badge -->
+        <div class="spotlight-badge" data-badge>
+          <span class="badge-dot"></span>
+          <span class="badge-text">{{ badgeText }}</span>
+        </div>
+
+        <!-- Title -->
+        <h2 class="spotlight-title" data-title>{{ project.label }}</h2>
+
+        <!-- Tagline/Description -->
+        <p class="spotlight-tagline" data-tagline>{{ getTagline() }}</p>
+
+        <!-- Highlights -->
+        @if (getHighlights().length > 0) {
+          <ul class="spotlight-highlights" data-highlights>
+            @for (highlight of getHighlights(); track $index) {
+              <li class="highlight-item" [attr.data-highlight-index]="$index">
+                {{ highlight }}
+              </li>
+            }
+          </ul>
+        }
+
+        <!-- Technologies -->
+        <div class="spotlight-technologies" data-technologies>
+          @for (tech of getVisibleTechnologies(); track tech) {
+            <span class="tech-chip">{{ tech }}</span>
+          }
+          @if (getRemainingTechCount() > 0) {
+            <span class="tech-chip tech-chip-overflow">+{{ getRemainingTechCount() }}</span>
+          }
+        </div>
+
+        <!-- CTAs -->
+        <div class="spotlight-ctas" data-ctas>
+          @if (project.live) {
+            <p-button
+              label="Live Demo"
+              icon="pi pi-external-link"
+              (onClick)="goToLiveUrl(project.live)"
+              styleClass="cta-button cta-primary"
+            ></p-button>
+            <p-button
+              label="Details"
+              icon="pi pi-arrow-right"
+              [routerLink]="projectRoute"
+              outlined
+              styleClass="cta-button cta-secondary"
+            ></p-button>
+          } @else {
+            <p-button
+              label="Details"
+              icon="pi pi-arrow-right"
+              [routerLink]="projectRoute"
+              styleClass="cta-button cta-primary"
+            ></p-button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}
