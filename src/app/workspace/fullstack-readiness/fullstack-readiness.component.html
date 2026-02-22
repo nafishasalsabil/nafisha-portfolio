@@ -1,0 +1,43 @@
+<div class="readiness-section py-16 px-4 sm:px-6 lg:px-8" style="background-color: var(--card-bg)">
+  <div class="max-w-6xl mx-auto">
+    <div class="readiness-header">
+      <h2 class="section-title">Full-Stack Readiness</h2>
+      <div class="title-decoration">
+        <div class="title-box"></div>
+        <div class="title-line"></div>
+      </div>
+      <p class="section-description">
+        Production experience across the full stack—from frontend SPAs to backend APIs and relational databases.
+      </p>
+    </div>
+
+    <div class="readiness-grid">
+      @for (item of readinessItems; track item.label) {
+        <div class="readiness-card">
+          <div class="card-header">
+            <h3 class="card-title">{{ item.label }}</h3>
+            <p class="card-proof">{{ item.proof }}</p>
+          </div>
+          @if (item.projects && item.projects.length > 0) {
+            <div class="card-projects">
+              <span class="projects-label">Proof:</span>
+              <div class="project-links">
+                @for (project of item.projects; track project.id) {
+                  <a 
+                    [routerLink]="getProjectRoute(project)"
+                    class="project-link"
+                  >
+                    {{ project.label }}
+                  </a>
+                  @if (!$last) {
+                    <span class="separator">,</span>
+                  }
+                }
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>

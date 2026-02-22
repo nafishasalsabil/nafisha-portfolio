@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { shareReplay, map } from 'rxjs/operators';
 
+export type BackendType = 'built' | 'integrated' | 'firebase' | 'none';
+
 export interface Project {
   id: number;
   img: string;
@@ -21,6 +23,12 @@ export interface Project {
   status?: string;
   github?: string;
   screenshots?: string[];
+  // Backend proof fields
+  backendType?: BackendType;
+  backendStack?: string;
+  database?: string;
+  language?: string[];
+  oopProof?: string[];
 }
 
 @Injectable({

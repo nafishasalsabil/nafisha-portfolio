@@ -5,6 +5,7 @@ import {DashboardComponent} from "../../workspace/dashboard/dashboard.component"
 import {ProjectsComponent} from "../../workspace/projects/projects.component";
 import {ResumeComponent} from "../../workspace/resume/resume.component";
 import {ServicesComponent} from "../../workspace/services/services.component";
+import {FullstackReadinessComponent} from "../../workspace/fullstack-readiness/fullstack-readiness.component";
 
 @Component({
   selector: 'app-landing',
@@ -14,7 +15,8 @@ import {ServicesComponent} from "../../workspace/services/services.component";
         DashboardComponent,
         ProjectsComponent,
         ResumeComponent,
-        ServicesComponent
+        ServicesComponent,
+        FullstackReadinessComponent
     ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss'

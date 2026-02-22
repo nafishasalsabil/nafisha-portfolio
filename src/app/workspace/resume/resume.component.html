@@ -40,9 +40,9 @@
       </div>
     </div>
   </div>
-  <div class="hobby-parent py-10 flex flex-col items-center justify-center gap-4 max-w-6xl mx-auto">
+  <div class="skills-section py-10 flex flex-col items-center justify-center gap-4 max-w-6xl mx-auto">
     <div>
-      <h2 class="text-3xl font-medium">Work Expertise</h2>
+      <h2 class="text-3xl font-medium">Skills & Tools</h2>
     </div>
     <div>
       <div class="title-box"></div>
@@ -50,47 +50,93 @@
     </div>
     <div class="mt-5">
       <p class="text-gray-400 text-center">
-        I specialize in Angular, TypeScript, and PrimeNG, with growing expertise in Tailwind CSS and Firebase. My focus is on building intuitive, responsive UIs, integrating backend systems, and ensuring design accuracy through pixel-perfect implementation.
+        I build SPA applications with Angular and React, integrate backend systems (Spring Boot, Laravel, Node.js) via REST APIs, and work with relational databases (MySQL/PostgreSQL) alongside Firebase when needed. I follow OOP principles and modular architecture to ship production-ready features.
       </p>
-
+      <!-- <p class="text-gray-500 text-center text-sm mt-2 italic">
+        Levels reflect production usage and project experience.
+      </p> -->
     </div>
-    <div class="flex flex-col md:flex-row gap-10 py-10 max-w-5xl mx-auto w-full justify-center items-center">
-      <!-- Left: Categories -->
-      <div class="w-full md:w-1/3">
-        <div class="flex flex-col justify-evenly gap-6">
-          @for(category of skillCategories; track category){
-            <p-button
-              (onClick)="selectCategory(category)"
-              [label]="category.label"
-              [severity]="selectedCategory.label === category.label ? 'primary' : 'secondary'"
-              [outlined]="selectedCategory.label !== category.label"
-              [style]="{ width: '100%' }"
-              class="text-sm font-semibold"
-            ></p-button>
-          }
+    <!-- Unified Skills Module Container -->
+    <div class="skills-module py-10 max-w-5xl mx-auto w-full">
+      <div class="skills-module-container">
+        <!-- Left Panel: Category Navigation -->
+        <div class="skills-nav-panel">
+          <nav class="category-sidebar" role="tablist" aria-label="Skill categories">
+            @for(category of skillCategories; track category.label){
+              <button
+                type="button"
+                class="sidebar-nav-item"
+                [class.active]="selectedCategory?.label === category.label"
+                (click)="selectCategory(category)"
+                (keydown.enter)="selectCategory(category)"
+                [attr.aria-selected]="selectedCategory?.label === category.label"
+                role="tab"
+              >
+                <div class="nav-item-content">
+                  <div class="nav-icon-wrapper">
+                    @if (category.icon) {
+                      <i [ngClass]="[category.icon, 'nav-icon']"></i>
+                    }
+                  </div>
+                  <span class="nav-label">{{ category.label }}</span>
+                  <i class="pi pi-chevron-right nav-chevron"></i>
+                </div>
+                <div class="accent-rail"></div>
+              </button>
+            }
+          </nav>
+        </div>
 
+        <!-- Vertical Divider -->
+        <div class="skills-divider"></div>
+
+        <!-- Right Panel: Skills Content -->
+        <div class="skills-content-panel">
+          @if (selectedCategory) {
+            <div 
+              class="skills-content"
+              [class.animating]="isAnimating"
+            >
+              <!-- Top 4 Skills with Bars -->
+              <div class="top-skills">
+                @for(skill of getTopSkills(selectedCategory.skills); track skill.name){
+                  <div class="skill-item" [attr.data-skill-level]="skill.level.toLowerCase().replace(' ', '-')">
+                    <div class="skill-header">
+                      <span class="skill-name">{{ skill.name }}</span>
+                      <span class="skill-badge" [attr.data-level]="skill.level.toLowerCase().replace(' ', '-')">
+                        {{ skill.level }}
+                      </span>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                      <div 
+                        class="skill-bar"
+                        [style.width.%]="getLevelFill(skill.level)"
+                        [attr.data-level]="skill.level.toLowerCase().replace(' ', '-')"
+                      ></div>
+                    </div>
+                  </div>
+                }
+              </div>
+
+              <!-- Remaining Skills as Chips -->
+              @if (getRemainingSkills(selectedCategory.skills).length > 0) {
+                <div class="also-used-section">
+                  <div class="also-used-divider"></div>
+                  <p class="also-used-label">Also used:</p>
+                  <div class="skill-chips">
+                    @for(skill of getRemainingSkills(selectedCategory.skills); track skill.name){
+                      <span class="skill-chip" [attr.data-level]="skill.level.toLowerCase().replace(' ', '-')">
+                        {{ skill.name }}
+                        <span class="chip-level">{{ skill.level }}</span>
+                      </span>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          }
         </div>
       </div>
-
-      <!-- Right: Progress Bars -->
-
-      <div class="w-full md:w-2/3 space-y-6 min-h-[200px] flex flex-col justify-center">
-        @for(skill of selectedCategory.skills; track skill){
-          <div>
-            <div class="flex justify-between items-center text-sm font-medium mb-1" style="color: var(--card-icon)">
-              <span>{{ skill.name }}</span>
-              <span>{{ skill.displayValue }}%</span>
-            </div>
-            <p-progressBar
-              [style]="{ height: '6px' }"
-              [value]="skill.displayValue"
-              [showValue]="false"
-              styleClass="custom-progress"
-            ></p-progressBar>
-          </div>
-        }
-      </div>
     </div>
-
   </div>
 </div>

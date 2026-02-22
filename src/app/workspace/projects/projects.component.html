@@ -36,18 +36,39 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 my-5 w-full">
         @for (p of filteredProjects; track p) {
-          <div class="rounded-lg shadow-md overflow-hidden flex flex-col items-center group" style="background-color: var(--card-hover-bg)">
-            <div class="w-full aspect-square overflow-hidden">
-              <img
-                src="assets/images/projects/{{ p.img }}"
-                alt="{{ p.label }}"
-                class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 cursor-pointer"
-              />
+          <div class="project-card rounded-lg shadow-md overflow-hidden flex flex-col items-center group" style="background-color: var(--card-hover-bg)">
+            <div class="w-full aspect-square overflow-hidden relative">
+              <a [routerLink]="'/project/' + (p.slug || p.id)" class="block w-full h-full">
+                <img
+                  src="assets/images/projects/{{ p.img }}"
+                  alt="{{ p.label }}"
+                  class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                />
+              </a>
+              <!-- Proof Tags Overlay -->
+              @if (getProofTags(p).length > 0) {
+                <div class="proof-tags-overlay">
+                  @for (tag of getProofTags(p); track tag) {
+                    <span class="proof-tag">{{ tag }}</span>
+                  }
+                </div>
+              }
             </div>
-            <div class="py-6 text-center">
-              <h2 class="text-lg cursor-pointer hover:text-primary hover:underline" style="color: var(--card-text)"
+            <div class="py-6 px-4 text-center w-full">
+              <h2 class="text-lg cursor-pointer hover:text-primary hover:underline mb-2" style="color: var(--card-text)"
                   [routerLink]="'/project/' + p.id "
               >{{ p.label }}</h2>
+              <!-- Technology Chips -->
+              @if (p.technologies && p.technologies.length > 0) {
+                <div class="tech-chips-mini">
+                  @for (tech of p.technologies.slice(0, 3); track tech) {
+                    <span class="tech-chip-mini">{{ tech }}</span>
+                  }
+                  @if (p.technologies.length > 3) {
+                    <span class="tech-chip-mini">+{{ p.technologies.length - 3 }}</span>
+                  }
+                </div>
+              }
             </div>
           </div>
         }

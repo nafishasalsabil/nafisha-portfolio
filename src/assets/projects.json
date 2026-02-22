@@ -16,7 +16,15 @@
     "slug": "jotno-admin-panel-org",
     "addedAt": "2023-03-15",
     "role": "End-to-end",
-    "status": "Live"
+    "status": "Live",
+    "backendType": "integrated",
+    "backendStack": "Spring Boot REST APIs",
+    "language": ["TypeScript", "JavaScript"],
+    "oopProof": [
+      "Service-based architecture with dependency injection",
+      "Modular component design with reusable UI components",
+      "DTOs for API request/response handling"
+    ]
   },
   {
     "id": 2,
@@ -35,7 +43,15 @@
     "slug": "jotno-doctor-web",
     "addedAt": "2023-05-20",
     "role": "End-to-end",
-    "status": "Live"
+    "status": "Live",
+    "backendType": "integrated",
+    "backendStack": "Spring Boot REST APIs",
+    "language": ["TypeScript", "JavaScript"],
+    "oopProof": [
+      "Service layer architecture with RxJS observables",
+      "Reusable form components with validation",
+      "State management with reactive patterns"
+    ]
   },
   {
     "id": 3,
@@ -56,7 +72,8 @@
     "slug": "agrovet",
     "addedAt": "2023-07-10",
     "role": "End-to-end",
-    "status": "Live"
+    "status": "Live",
+    "language": ["TypeScript", "JavaScript"]
   },
   {
     "id": 4,
@@ -74,7 +91,15 @@
     "slug": "edcr-electronic-daily-call-report",
     "addedAt": "2023-09-05",
     "role": "End-to-end",
-    "status": "Live"
+    "status": "Live",
+    "backendType": "integrated",
+    "backendStack": "Spring Boot REST APIs",
+    "language": ["TypeScript", "JavaScript"],
+    "oopProof": [
+      "PWA architecture with offline-first design",
+      "Service-based data synchronization",
+      "Modular form components for field reporting"
+    ]
   },
   {
     "id": 5,
@@ -91,7 +116,15 @@
     "slug": "mrs",
     "addedAt": "2023-10-18",
     "role": "End-to-end",
-    "status": "Live"
+    "status": "Live",
+    "backendType": "integrated",
+    "backendStack": "Spring Boot REST APIs",
+    "language": ["TypeScript", "JavaScript"],
+    "oopProof": [
+      "Service-based scheduling logic",
+      "Reusable dashboard components",
+      "Modular reporting modules"
+    ]
   },
   {
     "id": 6,
@@ -110,7 +143,15 @@
     "slug": "central-admin-panel",
     "addedAt": "2023-11-22",
     "role": "End-to-end",
-    "status": "Live"
+    "status": "Live",
+    "backendType": "integrated",
+    "backendStack": "Spring Boot REST APIs",
+    "language": ["TypeScript", "JavaScript"],
+    "oopProof": [
+      "Modular service architecture with Keycloak integration",
+      "Reusable admin components with role-based access",
+      "Service layer for audit logging and user management"
+    ]
   },
   {
     "id": 7,
@@ -129,7 +170,8 @@
     "slug": "mullar-tex-ltd",
     "addedAt": "2024-01-12",
     "role": "End-to-end",
-    "status": "Live"
+    "status": "Live",
+    "language": ["TypeScript", "JavaScript", "PHP"]
   },
   {
     "id": 9,
@@ -163,7 +205,16 @@
     "slug": "careinvoice",
     "addedAt": "2024-03-20",
     "role": "End-to-end",
-    "status": "Prototype"
+    "status": "Prototype",
+    "backendType": "built",
+    "backendStack": "Spring Boot",
+    "language": ["TypeScript", "JavaScript", "Java"],
+    "oopProof": [
+      "RESTful API design with Spring Boot controllers",
+      "Service layer with dependency injection",
+      "DTOs for invoice and client data",
+      "Modular Angular services for API integration"
+    ]
   },
   {
     "id": 11,
@@ -186,6 +237,14 @@
       "Real-time group collaboration and private threads",
       "Identity handling and access control mechanisms",
       "Firebase-powered backend with React frontend"
+    ],
+    "backendType": "firebase",
+    "backendStack": "Firebase Auth + Firestore",
+    "language": ["JavaScript"],
+    "oopProof": [
+      "Component-based architecture with React",
+      "Custom hooks for data management",
+      "Modular authentication service"
     ]
   },
   {
@@ -195,15 +254,18 @@
     "category": "Personal Projects",
     "description": "Cassette is a frontend clone of a modern music streaming interface, styled to mimic apps like Spotify. It showcases responsive layouting, search/filtering, and dynamic theming. The app consumes Spotify APIs to simulate a real music browsing experience.",
     "technologies": [
-      "HTML",
-      "CSS",
-      "Firebase"
+     "HTML",
+     "CSS",
+     "Firebase"
     ],
     "live": "",
     "slug": "cassette",
     "addedAt": "2024-05-10",
     "role": "Frontend",
-    "status": "Prototype"
+    "status": "Prototype",
+    "backendType": "firebase",
+    "backendStack": "Firebase Auth + Firestore",
+    "language": ["JavaScript"]
   },
   {
     "id": 13,
@@ -220,7 +282,10 @@
     "slug": "chalkboard",
     "addedAt": "2024-06-18",
     "role": "End-to-end",
-    "status": "Prototype"
+    "status": "Prototype",
+    "backendType": "firebase",
+    "backendStack": "Firebase Auth + Firestore",
+    "language": ["JavaScript"]
   },
   {
     "id": 14,
@@ -244,7 +309,8 @@
       "OpenAI Chat API integration for code generation",
       "Real-time preview with instant feedback",
       "Minimalistic design optimized for developer workflows"
-    ]
+    ],
+    "language": ["JavaScript"]
   },
   {
     "id": 15,
@@ -267,7 +333,8 @@
       "Figma-compatible JSON generation",
       "Real-time design-to-code conversion",
       "Streamlined rapid prototyping workflow"
-    ]
+    ],
+    "language": ["JavaScript"]
   },
   {
     "id": 16,
@@ -296,7 +363,8 @@
       "Balancing performance with complex GSAP animations",
       "Creating an engaging mini-game that feels integrated, not gimmicky",
       "Designing a dark UI that remains accessible and readable"
-    ]
+    ],
+    "language": ["JavaScript"]
   },
   {
     "id": 17,
@@ -320,7 +388,8 @@
       "Scroll-driven animations for immersive storytelling",
       "Minimal monochrome design with professional aesthetic",
       "Next.js and TypeScript for type-safe development"
-    ]
+    ],
+    "language": ["TypeScript", "JavaScript"]
   },
   {
     "id": 18,
@@ -353,6 +422,16 @@
       "Implementing complex inventory algorithms efficiently",
       "Managing large-scale data with PostgreSQL",
       "Ensuring real-time updates across multiple users"
+    ],
+    "backendType": "built",
+    "backendStack": "NestJS + PostgreSQL",
+    "database": "PostgreSQL",
+    "language": ["TypeScript", "JavaScript"],
+    "oopProof": [
+      "NestJS modular architecture with dependency injection",
+      "Service layer with DTOs for data validation",
+      "Repository pattern with Prisma ORM",
+      "Reusable React components with TypeScript interfaces"
     ]
   }
 ]

@@ -110,5 +110,32 @@ export class ProjectsComponent implements OnInit {
     this.displayCount += 6;
   }
 
-
+  getProofTags(project: any): string[] {
+    const tags: string[] = [];
+    
+    if (project?.backendType) {
+      const badges: Record<string, string> = {
+        'built': 'Backend Built',
+        'integrated': 'Spring Boot API',
+        'firebase': 'Firebase',
+        'none': ''
+      };
+      const badge = badges[project.backendType];
+      if (badge) tags.push(badge);
+    }
+    
+    if (project?.database) {
+      tags.push(project.database);
+    }
+    
+    if (project?.backendStack && project.backendType === 'built') {
+      // Extract key tech from backendStack for built backends
+      const stackParts = project.backendStack.split('+')[0].trim();
+      if (stackParts && stackParts !== 'Spring Boot' && !tags.includes(stackParts)) {
+        tags.push(stackParts);
+      }
+    }
+    
+    return tags.slice(0, 3); // Cap at 3 tags
+  }
 }

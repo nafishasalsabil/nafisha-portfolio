@@ -220,6 +220,69 @@
       </div>
     </section>
 
+    <!-- Tech Proof Panel -->
+    @if (project.backendType || project.language || project.database || project.oopProof) {
+      <section class="tech-proof-panel" data-scroll-reveal>
+        <h2 class="section-title">Tech Proof</h2>
+        <div class="tech-proof-content">
+          <!-- Language(s) -->
+          @if (project.language && project.language.length > 0) {
+            <div class="proof-item">
+              <span class="proof-label">Language(s)</span>
+              <div class="proof-value">
+                @for (lang of project.language; track lang) {
+                  <span class="proof-chip">{{ lang }}</span>
+                }
+              </div>
+            </div>
+          }
+
+          <!-- SPA Framework -->
+          @if (getSPAFramework()) {
+            <div class="proof-item">
+              <span class="proof-label">SPA Framework</span>
+              <span class="proof-value">{{ getSPAFramework() }}</span>
+            </div>
+          }
+
+          <!-- Backend -->
+          @if (project.backendType) {
+            <div class="proof-item">
+              <span class="proof-label">Backend</span>
+              <div class="proof-value">
+                <span class="backend-badge" [attr.data-backend-type]="project.backendType">
+                  {{ getBackendBadgeText() }}
+                </span>
+                @if (project.backendStack) {
+                  <span class="backend-stack">{{ project.backendStack }}</span>
+                }
+              </div>
+            </div>
+          }
+
+          <!-- Database -->
+          @if (project.database) {
+            <div class="proof-item">
+              <span class="proof-label">Database</span>
+              <span class="proof-value">{{ project.database }}</span>
+            </div>
+          }
+
+          <!-- OOP/Architecture Proof -->
+          @if (project.oopProof && project.oopProof.length > 0) {
+            <div class="proof-item proof-item-full">
+              <span class="proof-label">OOP & Architecture</span>
+              <ul class="oop-proof-list">
+                @for (proof of project.oopProof; track proof) {
+                  <li class="oop-proof-item">{{ proof }}</li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+      </section>
+    }
+
     <!-- Case Study Sections -->
     <div class="case-study-sections">
       <!-- Key Highlights -->

@@ -1,0 +1,137 @@
+.readiness-section {
+  width: 100%;
+}
+
+.readiness-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--card-text);
+  margin: 0 0 1rem 0;
+}
+
+.title-decoration {
+  margin-bottom: 1.5rem;
+}
+
+.title-box,
+.title-line {
+  // Match existing title decoration styles from other sections
+  height: 2px;
+  background: var(--primary-color, #dc2626);
+  margin: 0 auto;
+}
+
+.title-box {
+  width: 60px;
+}
+
+.title-line {
+  width: 100px;
+  margin-top: 4px;
+}
+
+.section-description {
+  font-size: 1rem;
+  color: var(--card-text);
+  opacity: 0.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.readiness-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.readiness-card {
+  background: var(--card-hover-bg);
+  border: 1px solid var(--card-border, rgba(0, 0, 0, 0.1));
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px var(--card-shadow, rgba(0, 0, 0, 0.08));
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--card-shadow, rgba(0, 0, 0, 0.12));
+  }
+}
+
+.card-header {
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--card-text);
+  margin: 0 0 0.5rem 0;
+}
+
+.card-proof {
+  font-size: 0.875rem;
+  color: var(--card-text);
+  opacity: 0.8;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.card-projects {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--card-border, rgba(0, 0, 0, 0.1));
+}
+
+.projects-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--card-text);
+  opacity: 0.6;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.project-link {
+  font-size: 0.875rem;
+  color: var(--primary-color, #dc2626);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease-out, text-decoration 0.2s ease-out;
+  
+  &:hover {
+    color: var(--primary-color-dark, #b91c1c);
+    text-decoration: underline;
+  }
+  
+  &:focus {
+    outline: 2px solid var(--primary-color, #dc2626);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+.separator {
+  color: var(--card-text);
+  opacity: 0.4;
+}

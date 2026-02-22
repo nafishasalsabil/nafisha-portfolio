@@ -359,4 +359,65 @@ export class ProjectDetailComponent implements OnInit, OnDestroy, AfterViewInit 
     
     return parts.join(' • ');
   }
+
+  getBackendBadgeText(): string {
+    if (!this.project?.backendType) return '';
+    
+    const badges: Record<string, string> = {
+      'built': 'Backend Built',
+      'integrated': 'Backend Integrated (REST APIs)',
+      'firebase': 'Firebase Backend',
+      'none': ''
+    };
+    
+    return badges[this.project.backendType] || '';
+  }
+
+  getSPAFramework(): string {
+    if (!this.project?.technologies) return '';
+    const spaFrameworks = this.project.technologies.filter((t: string) => 
+      t.toLowerCase() === 'angular' || 
+      t.toLowerCase() === 'react' || 
+      t.toLowerCase() === 'vue' ||
+      t.toLowerCase().includes('next.js')
+    );
+    return spaFrameworks[0] || '';
+  }
+
+  getProofTags(): string[] {
+    const tags: string[] = [];
+    
+    if (this.project?.backendType) {
+      const badge = this.getBackendBadgeText();
+      if (badge) tags.push(badge);
+    }
+    
+    if (this.project?.database) {
+      tags.push(this.project.database);
+    }
+    
+    if (this.project?.backendStack) {
+      // Extract key tech from backendStack (e.g., "NestJS + PostgreSQL" -> "NestJS")
+      const stackParts = this.project.backendStack.split('+')[0].trim();
+      if (stackParts && !tags.includes(stackParts)) {
+        tags.push(stackParts);
+      }
+    }
+    
+    // Add "Spring Boot API" if integrated
+    if (this.project?.backendType === 'integrated' && this.project?.backendStack?.includes('Spring Boot')) {
+      if (!tags.includes('Spring Boot API')) {
+        tags.push('Spring Boot API');
+      }
+    }
+    
+    // Add "Firebase" if firebase backend
+    if (this.project?.backendType === 'firebase') {
+      if (!tags.includes('Firebase')) {
+        tags.push('Firebase');
+      }
+    }
+    
+    return tags.slice(0, 3); // Cap at 3 tags
+  }
 }
