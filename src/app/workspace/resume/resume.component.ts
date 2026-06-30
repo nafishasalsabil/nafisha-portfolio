@@ -36,10 +36,10 @@ export class ResumeComponent implements OnInit {
   constructor() {
     this.events = [
       {
-        date: '2024 – Present',
+        date: '2024 – 2026',
         title: 'Software Engineer',
         company: 'Square Health Ltd.',
-        description: 'Developing production-grade Angular applications with PrimeNG and Tailwind. Delivered modules like invoice generation, prescriber location, dynamic forms, and admin panel redesigns.',
+        description: 'Developed production-grade Angular applications using PrimeNG and Tailwind. Delivered modules including invoice generation, prescriber location tracking, dynamic forms, admin dashboards, and patient-facing interfaces.',
         icon: 'pi pi-star',
         color: '#6366F1'
       },
@@ -47,7 +47,7 @@ export class ResumeComponent implements OnInit {
         date: '2024 – Present',
         title: 'Freelance Full-Stack Developer',
         company: 'Independent',
-        description: 'Building and deploying web projects for clients using Angular and Firebase. Work includes responsive UI design, admin panels, and third-party integrations.',
+        description: 'Building web applications, dashboards, and automation tools for client and personal projects. Work includes responsive frontend development, Firebase integrations, admin panels, workflow automation, and business-oriented tools.',
         icon: 'pi pi-circle',
         color: '#10B981'
       },
@@ -55,7 +55,7 @@ export class ResumeComponent implements OnInit {
         date: '2023 - 2024',
         title: 'Software Engineer (Intern)',
         company: 'Square Health Ltd.',
-        description: 'Worked on the patient portal, doctor web, and admin dashboard. Gained hands-on experience with reCAPTCHA integration, bulk upload modules, and form-driven UIs. Collaborated with backend and QA for rapid iteration.',
+        description: 'Worked on patient portal, doctor web, and admin dashboard modules. Gained hands-on experience with reCAPTCHA integration, bulk uploads, API-driven forms, and frontend collaboration with backend and QA teams.',
         icon: 'pi pi-circle',
         color: '#10B981'
       }
@@ -94,6 +94,8 @@ export class ResumeComponent implements OnInit {
           {name: 'Laravel (PHP)', level: 'Proficient'},
           {name: 'Node.js', level: 'Proficient'},
           {name: 'Firebase', level: 'Proficient'},
+          {name: 'PostgreSQL', level: 'Proficient'},
+          {name: 'MySQL', level: 'Proficient'},
           {name: 'Spring Boot', level: 'Working Knowledge'},
           {name: 'Docker', level: 'Familiar'}
         ]
