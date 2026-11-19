@@ -1,65 +1,100 @@
 <div
-  class="parent w-full fixed top-0 z-50 text-color transition-all duration-300"
+  class="topbar parent w-full fixed top-0 z-50 text-color transition-all duration-300"
   [ngStyle]="{
     'background-color': 'var(--topbar-color)',
-    'box-shadow': isScrolled ? '0 6px 12px rgba(0,0,0,0.1)' : 'none'
+    'box-shadow': isScrolled ? '0 6px 18px rgba(0,0,0,0.08)' : 'none'
   }"
 >
-
-
-<div class="flex md:flex-row justify-between items-center w-full max-w-screen-xl px-4 py-4 gap-2">
-    <div class="text-2xl font-bold cursor-pointer" [routerLink]="'/'">NAFISHA.</div>
+  <div class="topbar-inner flex md:flex-row justify-between items-center w-full max-w-screen-xl px-4 sm:px-6 py-3.5 gap-2">
+    <a class="brand" [routerLink]="'/'">
+      NAFISHA<span class="brand-dot">.</span>
+    </a>
 
     <p-menubar
       [model]="items"
-      class="w-full lg:flex lg:justify-center border-none shadow-none bg-transparent font-semibold text-sm light:text-gray-800 menu"
+      class="w-full lg:flex lg:justify-center border-none shadow-none bg-transparent menu"
     ></p-menubar>
 
-    <div class="hidden lg:flex gap-2">
-      <button class="w-10 h-10 border rounded-md flex items-center justify-center light:text-gray-700 hover:text-primary-500">
-        <a href="https://www.facebook.com/nafisanam.salsabil/">
-          <i class="pi pi-facebook"></i>
-        </a>
-      </button>
-      <button class="w-10 h-10 border rounded-md flex items-center justify-center light:text-gray-700 hover:text-primary-500">
-        <a href="https://www.linkedin.com/in/nafisha-salsabil-38a771223/">
-          <i class="pi pi-linkedin"></i>
-        </a>
-      </button>
-      <button class="w-10 h-10 border rounded-md flex items-center justify-center light:text-gray-700 hover:text-primary-500">
-        <a href="https://www.instagram.com/nafishasalsabil/">
-          <i class="pi pi-instagram"></i>
-        </a>
-      </button>
-      <button class="w-10 h-10 border rounded-md flex items-center justify-center light:text-gray-700 hover:text-primary-500">
-        <a href="https://leetcode.com/u/nafishasalsabil/">
-          <i class="pi pi-code"></i>
-        </a>
-      </button>
+    <div class="hidden lg:flex gap-2 topbar-socials">
+      <a
+        class="icon-btn"
+        href="https://www.facebook.com/nafisanam.salsabil/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+      >
+        <i class="pi pi-facebook" aria-hidden="true"></i>
+      </a>
+      <a
+        class="icon-btn"
+        href="https://www.linkedin.com/in/nafisha-salsabil-38a771223/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+      >
+        <i class="pi pi-linkedin" aria-hidden="true"></i>
+      </a>
+      <a
+        class="icon-btn"
+        href="https://www.instagram.com/nafishasalsabil/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+      >
+        <i class="pi pi-instagram" aria-hidden="true"></i>
+      </a>
+      <a
+        class="icon-btn"
+        href="https://github.com/nafishasalsabil/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+      >
+        <i class="pi pi-github" aria-hidden="true"></i>
+      </a>
+      <a
+        class="icon-btn"
+        href="https://leetcode.com/u/nafishasalsabil/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LeetCode"
+      >
+        <i class="pi pi-code" aria-hidden="true"></i>
+      </a>
     </div>
-  <div>
-    <button class="w-10 h-10 border border-primary rounded-md flex items-center justify-center text-gray-700 hover:text-primary-500"
-            (click)="op.toggle($event)">
-      <i class="pi pi-spin pi-cog text-primary"></i>
-    </button>
-    <p-popover #op>
-      <div class="flex flex-col gap-4 w-[15.8rem] h-[16rem]">
-        <div class="flex items-center justify-between">
-          <span class="text-sm text-muted-color font-semibold">Theme</span>
-          <button type="button" class="text-gray-600 hover:text-primary" (click)="toggleDarkMode()"
-          >
-            <i class="pi text-lg"
-               [ngClass]="{
-             'pi-moon': layoutService.isDarkTheme(),
-             'pi-sun': !layoutService.isDarkTheme()
-           }">
-            </i>
-          </button>
-        </div>
 
-        <app-configurator></app-configurator>
-      </div>
-    </p-popover>
-  </div>
+    <div class="topbar-config">
+      <button
+        type="button"
+        class="icon-btn icon-btn-accent"
+        (click)="op.toggle($event)"
+        aria-label="Open theme settings"
+      >
+        <i class="pi pi-spin pi-cog text-primary" aria-hidden="true"></i>
+      </button>
+      <p-popover #op>
+        <div class="flex flex-col gap-4 w-[15.8rem] h-[16rem]">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-muted-color font-semibold">Theme</span>
+            <button
+              type="button"
+              class="theme-toggle"
+              (click)="toggleDarkMode()"
+              [attr.aria-label]="layoutService.isDarkTheme() ? 'Switch to light theme' : 'Switch to dark theme'"
+            >
+              <i
+                class="pi text-lg"
+                [ngClass]="{
+                  'pi-moon': layoutService.isDarkTheme(),
+                  'pi-sun': !layoutService.isDarkTheme()
+                }"
+                aria-hidden="true"
+              ></i>
+            </button>
+          </div>
+          <app-configurator></app-configurator>
+        </div>
+      </p-popover>
+    </div>
   </div>
 </div>

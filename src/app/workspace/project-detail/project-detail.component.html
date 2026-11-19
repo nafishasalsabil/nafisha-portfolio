@@ -1,397 +1,276 @@
 @if (notFound) {
-  <div class="not-found-container">
-    <div class="not-found-content">
-      <h1>Project Not Found</h1>
-      <p>The project you're looking for doesn't exist.</p>
-      <p-button
-        label="Back to Projects"
-        icon="pi pi-arrow-left"
-        [routerLink]="['/']"
-        [fragment]="'projects'"
-      ></p-button>
+  <div class="detail-page detail-not-found">
+    <div class="detail-shell">
+      <h1 class="detail-title">Project not found</h1>
+      <p class="detail-lede">The project you're looking for doesn't exist or was moved.</p>
+      <a class="detail-back" [routerLink]="['/']" [fragment]="'projects'">
+        ← Back to Projects
+      </a>
     </div>
   </div>
 } @else if (project) {
-  <!-- Hero Header - Premium Split Layout -->
-  <div 
-    class="project-hero"
-  >
-    <div 
-      class="hero-background-blur"
-      [style.background-image]="'url(' + getHeroPreviewImage() + ')'"
-    ></div>
-    <div class="hero-gradient-overlay"></div>
-    <div class="hero-container">
-      <!-- Left Column: Content -->
-      <div class="hero-content-column">
-        <p-breadcrumb
-          class="hero-breadcrumb"
-          [model]="items"
-          [home]="home"
-          data-hero-element="breadcrumb"
-        />
-        
-        <h1 class="hero-title" data-hero-element="title">{{ project.label }}</h1>
-        
-        <p class="hero-tagline" data-hero-element="tagline">{{ getTagline() }}</p>
-        
-        @if (project.description && project.description.length > 80) {
-          <p class="hero-description" data-hero-element="description">{{ getShortenedDescription() }}</p>
-        }
-        
-        <!-- Primary CTA Row -->
-        <div class="hero-cta-row" data-hero-element="ctas">
-          <div class="hero-cta-group">
-            @if (project.live) {
-              <p-button
-                label="Live Demo"
-                icon="pi pi-external-link"
-                (onClick)="goToLiveUrl(project.live!)"
-                styleClass="hero-cta hero-cta-primary"
-              ></p-button>
-            }
-            @if (project.github) {
-              <p-button
-                label="GitHub"
-                icon="pi pi-github"
-                (onClick)="goToGithub(project.github!)"
-                outlined
-                styleClass="hero-cta hero-cta-secondary"
-              ></p-button>
-            }
-          </div>
-          <a
-            [routerLink]="['/']"
-            [fragment]="'projects'"
-            class="hero-back-link"
-          >
-            ← Back to Projects
-          </a>
-        </div>
-        
-        <!-- Quick Facts Row -->
-        <div class="hero-quick-facts" data-hero-element="facts">
-          @for (fact of getQuickFacts(); track fact) {
-            <span class="hero-fact-chip">{{ fact }}</span>
+  <article class="detail-page">
+    <div class="detail-shell">
+      <a class="detail-back" [routerLink]="['/']" [fragment]="'projects'">
+        ← Back to Projects
+      </a>
+
+      <header class="detail-intro">
+        <div class="detail-intro-copy">
+          <h1 class="detail-title">{{ project.label }}</h1>
+          @if (getTagline()) {
+            <p class="detail-tagline">{{ getTagline() }}</p>
           }
         </div>
-      </div>
-      
-      <!-- Right Column: Preview -->
-      <div class="hero-preview-column" data-hero-element="preview">
-        <div class="hero-preview-frame">
-          <div class="preview-overlay-label">Preview</div>
-          <div class="preview-overlay-ctas">
-            @if (project.live) {
-              <button
-                type="button"
-                class="preview-overlay-cta"
-                (click)="goToLiveUrl(project.live!); $event.stopPropagation()"
-                (keydown.enter)="goToLiveUrl(project.live!); $event.stopPropagation()"
-                [attr.aria-label]="'Open Live Demo'"
-              >
-                <i class="pi pi-external-link"></i>
-                <span>Open Live</span>
-              </button>
-            }
-            @if (project.github) {
-              <button
-                type="button"
-                class="preview-overlay-cta"
-                (click)="goToGithub(project.github!); $event.stopPropagation()"
-                (keydown.enter)="goToGithub(project.github!); $event.stopPropagation()"
-                [attr.aria-label]="'Open GitHub'"
-              >
-                <i class="pi pi-github"></i>
-                <span>Open GitHub</span>
-              </button>
-            }
-          </div>
-          <img
-            [src]="getHeroPreviewImage()"
-            [alt]="project.label + ' preview'"
-            class="preview-image"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Main Content -->
-  <div class="project-content">
-    <!-- Media Gallery -->
-    <section class="media-section" data-scroll-reveal>
-      @if (project.screenshots && project.screenshots.length >= 2) {
-        <div class="media-gallery">
-          <div class="main-preview-wrapper">
-            <div class="browser-frame">
-              <div class="browser-header">
-                <div class="browser-dots">
-                  <span></span><span></span><span></span>
-                </div>
-              </div>
-              <div class="browser-content">
-                <img
-                  #mainPreview
-                  [src]="getMainPreviewImage()"
-                  [alt]="project.label + ' screenshot ' + (selectedScreenshotIndex + 1)"
-                  class="main-preview-image"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="thumbnail-strip">
-            @for (screenshot of project.screenshots; track $index) {
-              <button
-                type="button"
-                class="thumbnail-item"
-                [class.active]="selectedScreenshotIndex === $index"
-                (click)="selectScreenshot($index)"
-                (keydown.enter)="selectScreenshot($index)"
-                [attr.aria-label]="'View screenshot ' + ($index + 1)"
-              >
-                <img
-                  [src]="getThumbnailImage(screenshot)"
-                  [alt]="'Thumbnail ' + ($index + 1)"
-                  class="thumbnail-image"
-                />
-              </button>
-            }
-          </div>
-        </div>
-      } @else if (project.screenshots && project.screenshots.length === 1) {
-        <div class="media-gallery">
-          <div class="main-preview-wrapper">
-            <div class="browser-frame">
-              <div class="browser-header">
-                <div class="browser-dots">
-                  <span></span><span></span><span></span>
-                </div>
-              </div>
-              <div class="browser-content">
-                <img
-                  [src]="getThumbnailImage(project.screenshots[0])"
-                  [alt]="project.label"
-                  class="main-preview-image"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      } @else {
-        <div class="media-gallery">
-          <div class="main-preview-wrapper">
-            <div class="browser-frame">
-              <div class="browser-header">
-                <div class="browser-dots">
-                  <span></span><span></span><span></span>
-                </div>
-              </div>
-              <div class="browser-content">
-                <img
-                  [src]="'assets/images/projects/' + project.img"
-                  [alt]="project.label"
-                  class="main-preview-image"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      }
-    </section>
-
-    <!-- Quick Facts Strip -->
-    <section class="quick-facts" data-scroll-reveal>
-      <div class="fact-item">
-        <span class="fact-label">Role</span>
-        <span class="fact-value">{{ getRole() }}</span>
-      </div>
-      <div class="fact-item">
-        <span class="fact-label">Stack</span>
-        <span class="fact-value">{{ (project.technologies || []).slice(0, 3).join(', ') }}</span>
-      </div>
-      <div class="fact-item">
-        <span class="fact-label">Deployment</span>
-        <span class="fact-value">{{ getDeploymentStatus() }}</span>
-      </div>
-      <div class="fact-item">
-        <span class="fact-label">Category</span>
-        <span class="fact-value">{{ project.category }}</span>
-      </div>
-    </section>
-
-    <!-- Tech Proof Panel -->
-    @if (project.backendType || project.language || project.database || project.oopProof) {
-      <section class="tech-proof-panel" data-scroll-reveal>
-        <h2 class="section-title">Tech Proof</h2>
-        <div class="tech-proof-content">
-          <!-- Language(s) -->
-          @if (project.language && project.language.length > 0) {
-            <div class="proof-item">
-              <span class="proof-label">Language(s)</span>
-              <div class="proof-value">
-                @for (lang of project.language; track lang) {
-                  <span class="proof-chip">{{ lang }}</span>
+        <div class="detail-intro-aside" aria-label="Project summary">
+          @if (getCategory()) {
+            <span class="detail-badge">{{ getCategory() }}</span>
+          }
+          @if (getTechSummary()) {
+            <p class="detail-tech-summary">{{ getTechSummary() }}</p>
+          }
+          @if (hasDemoActions()) {
+            <div class="detail-actions">
+              @if (hasLiveLinks()) {
+                @for (link of getLiveLinks(); track link.url; let i = $index) {
+                  <a
+                    class="detail-btn"
+                    [class.detail-btn-primary]="i === 0"
+                    [class.detail-btn-outline]="i > 0"
+                    [href]="link.url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="pi pi-external-link" aria-hidden="true"></i>
+                    {{ link.label }}
+                  </a>
                 }
+              } @else if (hasLiveUrl()) {
+                <a
+                  class="detail-btn detail-btn-primary"
+                  [href]="project.live"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="pi pi-external-link" aria-hidden="true"></i>
+                  Live Demo
+                </a>
+              }
+              @if (hasGithubUrl()) {
+                <a
+                  class="detail-btn detail-btn-icon"
+                  [href]="project.github"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View GitHub repository"
+                >
+                  <i class="pi pi-github" aria-hidden="true"></i>
+                </a>
+              }
+            </div>
+          }
+        </div>
+      </header>
+
+      @if (getPrimaryImage()) {
+        <figure class="detail-media">
+          <div class="browser-frame">
+            <div class="browser-chrome" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="browser-viewport">
+              <img
+                [src]="getPrimaryImage()"
+                [alt]="project.label + ' project screenshot'"
+                class="detail-main-image"
+                fetchpriority="high"
+              />
+            </div>
+          </div>
+        </figure>
+      }
+
+      @if (getRole() || getMetaTechLabel() || getStatus() || getCategory()) {
+        <dl class="detail-meta">
+          @if (getRole()) {
+            <div class="detail-meta-item">
+              <span class="detail-meta-icon" aria-hidden="true">
+                <i class="pi pi-briefcase"></i>
+              </span>
+              <div class="detail-meta-copy">
+                <dt>Role</dt>
+                <dd>{{ getRole() }}</dd>
               </div>
             </div>
           }
-
-          <!-- SPA Framework -->
-          @if (getSPAFramework()) {
-            <div class="proof-item">
-              <span class="proof-label">SPA Framework</span>
-              <span class="proof-value">{{ getSPAFramework() }}</span>
+          @if (getMetaTechLabel()) {
+            <div class="detail-meta-item">
+              <span class="detail-meta-icon" aria-hidden="true">
+                <i class="pi pi-objects-column"></i>
+              </span>
+              <div class="detail-meta-copy">
+                <dt>Technologies</dt>
+                <dd>{{ getMetaTechLabel() }}</dd>
+              </div>
             </div>
           }
+          @if (getStatus()) {
+            <div class="detail-meta-item">
+              <span class="detail-meta-icon" aria-hidden="true">
+                <i class="pi pi-desktop"></i>
+              </span>
+              <div class="detail-meta-copy">
+                <dt>Deployment</dt>
+                <dd>{{ getStatus() }}</dd>
+              </div>
+            </div>
+          }
+          @if (getCategory()) {
+            <div class="detail-meta-item">
+              <span class="detail-meta-icon" aria-hidden="true">
+                <i class="pi pi-th-large"></i>
+              </span>
+              <div class="detail-meta-copy">
+                <dt>Category</dt>
+                <dd>{{ getCategory() }}</dd>
+              </div>
+            </div>
+          }
+        </dl>
+      }
 
-          <!-- Backend -->
-          @if (project.backendType) {
-            <div class="proof-item">
-              <span class="proof-label">Backend</span>
-              <div class="proof-value">
-                <span class="backend-badge" [attr.data-backend-type]="project.backendType">
-                  {{ getBackendBadgeText() }}
+      @if (project.description) {
+        <section class="detail-section detail-overview" aria-labelledby="overview-heading">
+          <h2 id="overview-heading" class="detail-section-title">Overview</h2>
+          <p class="detail-overview-copy">{{ project.description }}</p>
+        </section>
+      }
+
+      @if (getHighlights().length) {
+        <section class="detail-section detail-highlights" aria-labelledby="highlights-heading">
+          <h2 id="highlights-heading" class="detail-section-title detail-section-title-block">
+            Key Highlights
+          </h2>
+          <ul class="highlight-grid">
+            @for (item of getHighlights(); track item.title) {
+              <li class="highlight-card">
+                <span class="highlight-icon" aria-hidden="true">
+                  <i class="pi pi-star"></i>
                 </span>
-                @if (project.backendStack) {
-                  <span class="backend-stack">{{ project.backendStack }}</span>
+                <div class="highlight-copy">
+                  <h3 class="highlight-title">{{ item.title }}</h3>
+                  <p class="highlight-text">{{ item.description }}</p>
+                </div>
+              </li>
+            }
+          </ul>
+        </section>
+      }
+
+      @if (getChallenges().length) {
+        <section class="detail-section detail-challenges" aria-labelledby="challenges-heading">
+          <h2 id="challenges-heading" class="detail-section-title">Challenges &amp; Decisions</h2>
+          <ul class="challenge-list">
+            @for (item of getChallenges(); track $index) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        </section>
+      }
+
+      @if (getTechnologies().length) {
+        <section class="detail-section detail-stack" aria-labelledby="stack-heading">
+          <h2 id="stack-heading" class="detail-section-title detail-section-title-block">
+            Tech Stack
+          </h2>
+          <ul class="stack-pills" aria-label="Technologies used">
+            @for (badge of getTechBadges(); track badge.label) {
+              <li class="tech-badge">
+                <svg
+                  class="tech-badge-icon"
+                  [class.is-dark-logo]="badge.isDarkLogo"
+                  [class.is-fallback]="badge.isFallback"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                  [attr.fill]="'#' + badge.hex"
+                >
+                  <path [attr.d]="badge.path" />
+                </svg>
+                <span class="tech-badge-label">{{ badge.label }}</span>
+              </li>
+            }
+          </ul>
+        </section>
+      }
+
+      @if (getGalleryImages().length) {
+        <section class="detail-section detail-gallery" aria-labelledby="gallery-heading">
+          <h2 id="gallery-heading" class="detail-section-title detail-section-title-block">
+            Additional Screenshots
+          </h2>
+          <div class="gallery">
+            <div class="gallery-main">
+              <img
+                [src]="getGallerySrc(getGalleryImages()[selectedGalleryIndex])"
+                [alt]="project.label + ' screenshot ' + (selectedGalleryIndex + 1)"
+                loading="lazy"
+              />
+            </div>
+            @if (getGalleryImages().length > 1) {
+              <div class="gallery-thumbs" role="list">
+                @for (shot of getGalleryImages(); track $index) {
+                  <button
+                    type="button"
+                    class="gallery-thumb"
+                    [class.is-active]="selectedGalleryIndex === $index"
+                    (click)="selectGalleryImage($index)"
+                    [attr.aria-label]="'Show screenshot ' + ($index + 1)"
+                    [attr.aria-pressed]="selectedGalleryIndex === $index"
+                  >
+                    <img [src]="getGallerySrc(shot)" [alt]="''" loading="lazy" />
+                  </button>
                 }
               </div>
-            </div>
-          }
-
-          <!-- Database -->
-          @if (project.database) {
-            <div class="proof-item">
-              <span class="proof-label">Database</span>
-              <span class="proof-value">{{ project.database }}</span>
-            </div>
-          }
-
-          <!-- OOP/Architecture Proof -->
-          @if (project.oopProof && project.oopProof.length > 0) {
-            <div class="proof-item proof-item-full">
-              <span class="proof-label">OOP & Architecture</span>
-              <ul class="oop-proof-list">
-                @for (proof of project.oopProof; track proof) {
-                  <li class="oop-proof-item">{{ proof }}</li>
-                }
-              </ul>
-            </div>
-          }
-        </div>
-      </section>
-    }
-
-    <!-- Case Study Sections -->
-    <div class="case-study-sections">
-      <!-- Key Highlights -->
-      @if (getHighlights().length > 0) {
-        <section class="case-section" data-scroll-reveal>
-          <h2 class="section-title">Key Highlights</h2>
-          <ul class="highlights-list">
-            @for (highlight of getHighlights(); track $index) {
-              <li class="highlight-item">{{ highlight }}</li>
             }
-          </ul>
+          </div>
         </section>
       }
 
-      <!-- Challenges & Decisions -->
-      @if (project.challenges && project.challenges.length > 0) {
-        <section class="case-section" data-scroll-reveal>
-          <h2 class="section-title">Challenges & Decisions</h2>
-          <ul class="challenges-list">
-            @for (challenge of project.challenges; track $index) {
-              <li class="challenge-item">{{ challenge }}</li>
-            }
-          </ul>
-        </section>
-      }
+      @if (previousProject || nextProject) {
+        <nav class="detail-nav" aria-label="Adjacent projects">
+          @if (previousProject) {
+            <a
+              class="detail-nav-card detail-nav-prev"
+              [routerLink]="projectRoute(previousProject)"
+              [attr.aria-label]="'Previous project: ' + previousProject.label"
+              (click)="onNavActivate()"
+            >
+              <span class="detail-nav-meta">
+                <i class="pi pi-arrow-left detail-nav-arrow" aria-hidden="true"></i>
+                <span class="detail-nav-label">Previous Project</span>
+              </span>
+              <span class="detail-nav-name">{{ previousProject.label }}</span>
+            </a>
+          }
 
-      <!-- Technologies Used -->
-      <section class="case-section" data-scroll-reveal>
-        <h2 class="section-title">Technologies Used</h2>
-        <div class="technologies-grid">
-          @for (tech of getVisibleTechnologies(); track tech) {
-            <span class="tech-chip">{{ tech }}</span>
+          @if (nextProject) {
+            <a
+              class="detail-nav-card detail-nav-next"
+              [routerLink]="projectRoute(nextProject)"
+              [attr.aria-label]="'Next project: ' + nextProject.label"
+              (click)="onNavActivate()"
+            >
+              <span class="detail-nav-meta">
+                <span class="detail-nav-label">Next Project</span>
+                <i class="pi pi-arrow-right detail-nav-arrow" aria-hidden="true"></i>
+              </span>
+              <span class="detail-nav-name">{{ nextProject.label }}</span>
+            </a>
           }
-          @if (getRemainingTechCount() > 0) {
-            <span class="tech-chip tech-chip-overflow">+{{ getRemainingTechCount() }}</span>
-          }
-        </div>
-      </section>
+        </nav>
+      }
     </div>
-
-    <!-- Next/Previous Navigation -->
-    <section class="project-navigation" data-scroll-reveal>
-      <div class="nav-container">
-        @if (previousProject) {
-          <button
-            type="button"
-            class="nav-card nav-previous"
-            (click)="navigateToProject(previousProject)"
-            (keydown.enter)="navigateToProject(previousProject)"
-            [attr.aria-label]="'Previous project: ' + previousProject.label"
-          >
-            <!-- Left Zone: Content -->
-            <div class="nav-content-zone">
-              <span class="nav-label">Previous project</span>
-              <div class="nav-title-wrapper">
-                <h3 class="nav-title">{{ previousProject.label }}</h3>
-                <div class="nav-arrow nav-arrow-left">
-                  <i class="pi pi-arrow-left"></i>
-                </div>
-              </div>
-              <p class="nav-meta">{{ getNavMetaLine(previousProject) }}</p>
-            </div>
-            <!-- Right Zone: Preview -->
-            <div class="nav-preview-zone">
-              <div class="nav-preview-overlay"></div>
-              <img
-                [src]="getNavPreviewImage(previousProject)"
-                [alt]="previousProject.label"
-                class="nav-preview-image"
-              />
-            </div>
-          </button>
-        } @else {
-          <div class="nav-card nav-placeholder"></div>
-        }
-
-        @if (nextProject) {
-          <button
-            type="button"
-            class="nav-card nav-next"
-            (click)="navigateToProject(nextProject)"
-            (keydown.enter)="navigateToProject(nextProject)"
-            [attr.aria-label]="'Next project: ' + nextProject.label"
-          >
-            <!-- Left Zone: Content -->
-            <div class="nav-content-zone">
-              <span class="nav-label">Next project</span>
-              <div class="nav-title-wrapper">
-                <h3 class="nav-title">{{ nextProject.label }}</h3>
-                <div class="nav-arrow nav-arrow-right">
-                  <i class="pi pi-arrow-right"></i>
-                </div>
-              </div>
-              <p class="nav-meta">{{ getNavMetaLine(nextProject) }}</p>
-            </div>
-            <!-- Right Zone: Preview -->
-            <div class="nav-preview-zone">
-              <div class="nav-preview-overlay"></div>
-              <img
-                [src]="getNavPreviewImage(nextProject)"
-                [alt]="nextProject.label"
-                class="nav-preview-image"
-              />
-            </div>
-          </button>
-        } @else {
-          <div class="nav-card nav-placeholder"></div>
-        }
-      </div>
-    </section>
-  </div>
+  </article>
 }

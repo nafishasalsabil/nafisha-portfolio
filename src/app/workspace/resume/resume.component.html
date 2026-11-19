@@ -1,142 +1,32 @@
-<div class="wrapper py-16 px-4 sm:px-6 lg:px-8" style="background-color: var(--card-hover-bg)">
-  <div class="flex flex-col md:flex-row items-center gap-10 max-w-6xl mx-auto">
-    <div class="hobby-parent py-10 flex flex-col items-center justify-center gap-4">
-      <div>
-        <h2 class="text-3xl font-medium">Experience Timeline</h2>
-      </div>
-      <div>
-        <div class="title-box"></div>
-        <div class="title-line"></div>
-      </div>
-      <div class="mt-5">
-        <p class="text-gray-400 text-center">
-          Over the past year, I’ve contributed to production-grade Angular applications, including admin panels, invoice systems, and map-based live tracking. My journey includes full-time roles, internships, and freelance projects focused on solving real-world problems with clean, scalable code.
+<section class="experience-section" aria-labelledby="experience-heading">
+  <div class="experience-shell">
+    <div class="experience-layout">
+      <header class="experience-intro">
+        <p class="experience-eyebrow">
+          <span class="experience-eyebrow-rule" aria-hidden="true"></span>
+          Experience
         </p>
-      </div>
-      <div >
-        <p-timeline [value]="events" align="alternate" styleClass="customized-timeline">
-          <ng-template #marker let-event>
-            <span
-              class="flex items-center justify-center w-5 h-5 rounded-full border border-gray-400 z-10" style="background-color: var(--card-bg)"
-            >
-              <i [ngClass]="[event.icon, '!text-[14px]']"></i>
-            </span>
+        <h2 id="experience-heading" class="experience-title">
+          My Professional Journey
+        </h2>
+        <p class="experience-lede">{{ intro }}</p>
+      </header>
 
-
-          </ng-template>
-
-          <ng-template #content let-event>
-            <div class="border border-surface-200 rounded-lg shadow-sm p-6 mb-2 w-full" style="background-color: var(--gray-bg);">
-              <div class="text-sm mb-1" style="color: var(--service-text);">{{ event.date }}</div>
-              <div class="text-lg  mb-1" style="color: var(--card-text);">{{ event.title }}</div>
-              <div class="text-sm  mb-3" style="color: var(--card-text);">{{ event.company }}</div>
-              <p class="text-surface-500 text-sm leading-relaxed tracking-normal">
-                {{ event.description }}
-              </p>
+      <ol class="experience-timeline">
+        @for (event of events; track event.title + event.date) {
+          <li class="experience-entry">
+            <div class="experience-marker" aria-hidden="true">
+              <span class="experience-dot"></span>
             </div>
-          </ng-template>
-        </p-timeline>
-
-      </div>
+            <div class="experience-card">
+              <p class="experience-date">{{ event.date }}</p>
+              <h3 class="experience-role">{{ event.title }}</h3>
+              <p class="experience-company">{{ event.company }}</p>
+              <p class="experience-copy">{{ event.description }}</p>
+            </div>
+          </li>
+        }
+      </ol>
     </div>
   </div>
-  <div class="skills-section py-10 flex flex-col items-center justify-center gap-4 max-w-6xl mx-auto">
-    <div>
-      <h2 class="text-3xl font-medium">Skills & Tools</h2>
-    </div>
-    <div>
-      <div class="title-box"></div>
-      <div class="title-line"></div>
-    </div>
-    <div class="mt-5">
-      <p class="text-gray-400 text-center">
-        I build SPA applications with Angular and React, integrate backend systems (Spring Boot, Laravel, Node.js) via REST APIs, and work with relational databases (MySQL/PostgreSQL) alongside Firebase when needed. I follow OOP principles and modular architecture to ship production-ready features.
-      </p>
-      <!-- <p class="text-gray-500 text-center text-sm mt-2 italic">
-        Levels reflect production usage and project experience.
-      </p> -->
-    </div>
-    <!-- Unified Skills Module Container -->
-    <div class="skills-module py-10 max-w-5xl mx-auto w-full">
-      <div class="skills-module-container">
-        <!-- Left Panel: Category Navigation -->
-        <div class="skills-nav-panel">
-          <nav class="category-sidebar" role="tablist" aria-label="Skill categories">
-            @for(category of skillCategories; track category.label){
-              <button
-                type="button"
-                class="sidebar-nav-item"
-                [class.active]="selectedCategory?.label === category.label"
-                (click)="selectCategory(category)"
-                (keydown.enter)="selectCategory(category)"
-                [attr.aria-selected]="selectedCategory?.label === category.label"
-                role="tab"
-              >
-                <div class="nav-item-content">
-                  <div class="nav-icon-wrapper">
-                    @if (category.icon) {
-                      <i [ngClass]="[category.icon, 'nav-icon']"></i>
-                    }
-                  </div>
-                  <span class="nav-label">{{ category.label }}</span>
-                  <i class="pi pi-chevron-right nav-chevron"></i>
-                </div>
-                <div class="accent-rail"></div>
-              </button>
-            }
-          </nav>
-        </div>
-
-        <!-- Vertical Divider -->
-        <div class="skills-divider"></div>
-
-        <!-- Right Panel: Skills Content -->
-        <div class="skills-content-panel">
-          @if (selectedCategory) {
-            <div 
-              class="skills-content"
-              [class.animating]="isAnimating"
-            >
-              <!-- Top 4 Skills with Bars -->
-              <div class="top-skills">
-                @for(skill of getTopSkills(selectedCategory.skills); track skill.name){
-                  <div class="skill-item" [attr.data-skill-level]="skill.level.toLowerCase().replace(' ', '-')">
-                    <div class="skill-header">
-                      <span class="skill-name">{{ skill.name }}</span>
-                      <span class="skill-badge" [attr.data-level]="skill.level.toLowerCase().replace(' ', '-')">
-                        {{ skill.level }}
-                      </span>
-                    </div>
-                    <div class="skill-bar-wrapper">
-                      <div 
-                        class="skill-bar"
-                        [style.width.%]="getLevelFill(skill.level)"
-                        [attr.data-level]="skill.level.toLowerCase().replace(' ', '-')"
-                      ></div>
-                    </div>
-                  </div>
-                }
-              </div>
-
-              <!-- Remaining Skills as Chips -->
-              @if (getRemainingSkills(selectedCategory.skills).length > 0) {
-                <div class="also-used-section">
-                  <div class="also-used-divider"></div>
-                  <p class="also-used-label">Also used:</p>
-                  <div class="skill-chips">
-                    @for(skill of getRemainingSkills(selectedCategory.skills); track skill.name){
-                      <span class="skill-chip" [attr.data-level]="skill.level.toLowerCase().replace(' ', '-')">
-                        {{ skill.name }}
-                        <span class="chip-level">{{ skill.level }}</span>
-                      </span>
-                    }
-                  </div>
-                </div>
-              }
-            </div>
-          }
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+</section>

@@ -1,82 +1,152 @@
-<div class="wrapper py-16 px-4 sm:px-6 lg:px-8 pt-0" style="background-color: var(--card-bg)">
-  <div class="flex flex-col md:flex-row items-center gap-10 max-w-6xl mx-auto">
-    <div class="project-parent py-10 flex flex-col items-center justify-center gap-4">
-      <div>
-        <h2 class="text-3xl font-medium">My Portfolio</h2>
+<section class="projects-section" aria-labelledby="projects-heading">
+  <div class="projects-shell">
+    <header class="projects-header">
+      <div class="projects-header-copy">
+        <p class="projects-eyebrow">
+          <span class="projects-eyebrow-rule" aria-hidden="true"></span>
+          Selected Work
+        </p>
+        <h2 id="projects-heading" class="projects-title">Projects I'm Proud Of</h2>
+        <p class="projects-intro">
+          A curated look at production systems and personal builds—UI-heavy,
+          performance-conscious, and shipped end-to-end.
+        </p>
       </div>
-      <div>
-        <div class="title-box"></div>
-        <div class="title-line"></div>
+      <div class="projects-header-actions">
+        @if (showFeaturedGrid) {
+          <button
+            type="button"
+            class="projects-browse-link"
+            (click)="browseAllProjects()"
+          >
+            Browse all projects
+            <i class="pi pi-arrow-right" aria-hidden="true"></i>
+          </button>
+        } @else {
+          <button
+            type="button"
+            class="projects-browse-link"
+            (click)="showFeaturedView()"
+          >
+            Back to selected work
+            <i class="pi pi-arrow-left" aria-hidden="true"></i>
+          </button>
+        }
       </div>
-      <div class="mt-5">
-        <p class="text-gray-400 text-center">
-          A selection of production work and personal builds—UI-heavy, performance-conscious, and shipped end-to-end.
+    </header>
+
+    <div id="project-filters" class="projects-filters" role="toolbar" aria-label="Filter projects by category">
+      @for (f of filters; track f.label) {
+        <button
+          type="button"
+          class="filter-chip"
+          [class.is-active]="selectedFilter.label === f.label"
+          (click)="selectFilter(f)"
+          [attr.aria-pressed]="selectedFilter.label === f.label"
+        >
+          {{ f.label }}
+        </button>
+      }
+    </div>
+
+    @if (spotlightProject) {
+      <div class="projects-feature">
+        <app-project-spotlight [project]="spotlightProject"></app-project-spotlight>
+      </div>
+    }
+
+    @if (showFeaturedGrid) {
+      <!-- Supporting cards under the persistent featured project -->
+      <div class="support-row support-row-prominent">
+        @for (p of prominentProjects; track p.id) {
+          <a class="project-card project-card-prominent" [routerLink]="projectRoute(p)">
+            <div class="card-copy">
+              <h3 class="card-title">{{ p.label }}</h3>
+              <p class="card-summary">{{ projectSummary(p, 110) }}</p>
+              @if (p.technologies.length) {
+                <ul class="tech-list" aria-label="Technologies">
+                  @for (tech of p.technologies.slice(0, 3); track tech) {
+                    <li class="tech-chip">{{ tech }}</li>
+                  }
+                </ul>
+              }
+              <span class="card-cta" aria-hidden="true">
+                <i class="pi pi-arrow-right"></i>
+              </span>
+            </div>
+            <div class="card-media">
+              <img
+                [src]="projectImgSrc(p.img)"
+                [alt]="p.label + ' preview'"
+                loading="lazy"
+              />
+            </div>
+          </a>
+        }
+      </div>
+
+      <div class="support-row support-row-compact">
+        @for (p of compactProjects; track p.id) {
+          <a class="project-card project-card-compact" [routerLink]="projectRoute(p)">
+            <div class="card-copy">
+              <h3 class="card-title">{{ p.label }}</h3>
+              <p class="card-summary">{{ projectSummary(p, 90) }}</p>
+              @if (p.technologies.length) {
+                <ul class="tech-list" aria-label="Technologies">
+                  @for (tech of p.technologies.slice(0, 2); track tech) {
+                    <li class="tech-chip">{{ tech }}</li>
+                  }
+                </ul>
+              }
+              <span class="card-cta" aria-hidden="true">
+                <i class="pi pi-arrow-right"></i>
+              </span>
+            </div>
+            <div class="card-media">
+              <img
+                [src]="projectImgSrc(p.img)"
+                [alt]="p.label + ' preview'"
+                loading="lazy"
+              />
+            </div>
+          </a>
+        }
+      </div>
+
+      <div class="projects-footer-cta">
+        <button type="button" class="more-works-btn" (click)="browseAllProjects()">
+          Browse all {{ projects.length }} projects
+          <i class="pi pi-arrow-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    } @else {
+      <div class="browse-meta">
+        <p>
+          Showing {{ filteredProjects.length }} of {{ filteredTotal }}
+          {{ selectedFilter.label === 'All' ? 'projects' : selectedFilter.label.toLowerCase() }}
         </p>
       </div>
 
-      <!-- Project Spotlight Section -->
-      @if (spotlightProject) {
-        <div class="w-full mb-6">
-          <app-project-spotlight [project]="spotlightProject"></app-project-spotlight>
-        </div>
-        <!-- <div class="w-full h-px bg-gray-200 dark:bg-gray-700 mb-6"></div> -->
-      }
-
-      <div class="flex flex-wrap justify-center gap-2 my-8 w-full">
-        @for (f of filters; track f) {
-          <p-button
-            [label]="f.label"
-            (onClick)="selectFilter(f)"
-            [severity]="selectedFilter.label === f.label ? 'primary' : 'secondary'"
-            [outlined]="selectedFilter.label !== f.label"
-            class="text-sm"
-          ></p-button>
+      <div class="browse-grid">
+        @for (p of filteredProjects; track p.id) {
+          <a class="project-card project-card-browse" [routerLink]="projectRoute(p)">
+            <div class="card-media">
+              <img
+                [src]="projectImgSrc(p.img)"
+                [alt]="p.label + ' preview'"
+                loading="lazy"
+              />
+            </div>
+            <div class="card-copy">
+              <h3 class="card-title">{{ p.label }}</h3>
+              <p class="card-summary">{{ browseSummary(p) }}</p>
+            </div>
+          </a>
         }
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 my-5 w-full">
-        @for (p of filteredProjects; track p) {
-          <div class="project-card rounded-lg shadow-md overflow-hidden flex flex-col items-center group" style="background-color: var(--card-hover-bg)">
-            <div class="w-full aspect-square overflow-hidden relative">
-              <a [routerLink]="'/project/' + (p.slug || p.id)" class="block w-full h-full">
-                <img
-                  src="assets/images/projects/{{ p.img }}"
-                  alt="{{ p.label }}"
-                  class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-                />
-              </a>
-              <!-- Proof Tags Overlay -->
-              @if (getProofTags(p).length > 0) {
-                <div class="proof-tags-overlay">
-                  @for (tag of getProofTags(p); track tag) {
-                    <span class="proof-tag">{{ tag }}</span>
-                  }
-                </div>
-              }
-            </div>
-            <div class="py-6 px-4 text-center w-full">
-              <h2 class="text-lg cursor-pointer hover:text-primary hover:underline mb-2" style="color: var(--card-text)"
-                  [routerLink]="'/project/' + p.id "
-              >{{ p.label }}</h2>
-              <!-- Technology Chips -->
-              @if (p.technologies && p.technologies.length > 0) {
-                <div class="tech-chips-mini">
-                  @for (tech of p.technologies.slice(0, 3); track tech) {
-                    <span class="tech-chip-mini">{{ tech }}</span>
-                  }
-                  @if (p.technologies.length > 3) {
-                    <span class="tech-chip-mini">+{{ p.technologies.length - 3 }}</span>
-                  }
-                </div>
-              }
-            </div>
-          </div>
-        }
-
-      </div>
-
-      @if (showMoreButton){
-        <div class="text-center mt-6">
+      @if (showMoreButton) {
+        <div class="projects-footer-cta">
           <p-button
             label="More works"
             icon="pi pi-refresh"
@@ -84,8 +154,7 @@
             (onClick)="loadMore()"
           ></p-button>
         </div>
-
       }
-    </div>
+    }
   </div>
-</div>
+</section>

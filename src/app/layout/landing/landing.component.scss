@@ -1,0 +1,36 @@
+.home-page {
+  --font-display: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --home-max-width: 72rem;
+  --home-gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --home-section-space: clamp(3.5rem, 8vw, 6.5rem);
+
+  font-family: var(--font-body);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+ * Homepage-only dark surface hierarchy.
+ * Scoped under .home-page so project-detail token usage is unchanged.
+ */
+:host-context(.app-dark) .home-page {
+  --topbar-color: var(--p-surface-950);
+  --card-bg: var(--p-surface-900);
+  --card-hover-bg: var(--p-surface-800);
+}
+
+/* Keep in-page anchors clear of the fixed topbar (hash links / browser restore) */
+.home-page > #dashboard,
+.home-page > #projects,
+.home-page > #resume,
+.home-page > #about-me,
+.home-page > #contact,
+.home-page #services {
+  scroll-margin-top: var(--topbar-offset, 4.25rem);
+}
+
+.home-page :is(p, span, a, button, li, label, input, textarea) {
+  font-family: var(--font-body);
+}

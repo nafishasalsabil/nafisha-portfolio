@@ -1,102 +1,69 @@
 @if (project) {
-  <div #spotlightContainer class="spotlight-container" data-spotlight>
-    <div class="spotlight-content">
-      <!-- Image Column -->
-      <div class="spotlight-image-wrapper" data-image tabindex="0" role="button" aria-label="View project preview">
-        <div class="image-overlay">
-          <div class="image-overlay-ctas">
-            @if (project.live) {
-              <button
-                type="button"
-                class="overlay-cta overlay-cta-primary"
-                (click)="goToLiveUrl(project.live); $event.stopPropagation()"
-                (keydown.enter)="goToLiveUrl(project.live); $event.stopPropagation()"
-                aria-label="View Live Demo"
-              >
-                <i class="pi pi-external-link"></i>
-                <span>View Live</span>
-              </button>
-            }
-            <button
-              type="button"
-              class="overlay-cta overlay-cta-secondary"
-              [routerLink]="projectRoute"
-              (click)="$event.stopPropagation()"
-              aria-label="View Details"
-            >
-              <i class="pi pi-arrow-right"></i>
-              <span>View Details</span>
-            </button>
-          </div>
-        </div>
+  <article
+    #spotlightContainer
+    class="spotlight"
+    data-spotlight
+    aria-labelledby="spotlight-title"
+  >
+    <div class="spotlight-stage">
+      <a
+        class="spotlight-visual"
+        [routerLink]="projectRoute"
+        [attr.aria-label]="'Open ' + project.label + ' detail page'"
+      >
+        <span class="spotlight-visual-glow" aria-hidden="true"></span>
         <img
-          [src]="'assets/images/projects/' + project.img"
-          [alt]="project.label"
+          [src]="projectImgSrc(project.img)"
+          [alt]="project.label + ' showcase preview'"
           class="spotlight-image"
+          loading="lazy"
         />
-      </div>
+      </a>
 
-      <!-- Content Column -->
-      <div class="spotlight-text-wrapper">
-        <!-- Badge -->
-        <div class="spotlight-badge" data-badge>
-          <span class="badge-dot"></span>
-          <span class="badge-text">{{ badgeText }}</span>
-        </div>
+      <div class="spotlight-body">
+        <p class="spotlight-eyebrow">
+          <span class="spotlight-dot" aria-hidden="true"></span>
+          {{ badgeText }}
+        </p>
 
-        <!-- Title -->
-        <h2 class="spotlight-title" data-title>{{ project.label }}</h2>
+        <h3 id="spotlight-title" class="spotlight-title">{{ project.label }}</h3>
 
-        <!-- Tagline/Description -->
-        <p class="spotlight-tagline" data-tagline>{{ getTagline() }}</p>
+        <p class="spotlight-overview">{{ getOverview() }}</p>
 
-        <!-- Highlights -->
         @if (getHighlights().length > 0) {
-          <ul class="spotlight-highlights" data-highlights>
-            @for (highlight of getHighlights(); track $index) {
-              <li class="highlight-item" [attr.data-highlight-index]="$index">
-                {{ highlight }}
-              </li>
+          <ul class="spotlight-highlights">
+            @for (highlight of getHighlights().slice(0, 3); track $index) {
+              <li>{{ highlight }}</li>
             }
           </ul>
         }
 
-        <!-- Technologies -->
-        <div class="spotlight-technologies" data-technologies>
-          @for (tech of getVisibleTechnologies(); track tech) {
-            <span class="tech-chip">{{ tech }}</span>
-          }
-          @if (getRemainingTechCount() > 0) {
-            <span class="tech-chip tech-chip-overflow">+{{ getRemainingTechCount() }}</span>
-          }
-        </div>
+        @if (getVisibleTechnologies().length > 0) {
+          <ul class="spotlight-tech" aria-label="Technologies">
+            @for (tech of getVisibleTechnologies(); track tech) {
+              <li>{{ tech }}</li>
+            }
+          </ul>
+        }
 
-        <!-- CTAs -->
-        <div class="spotlight-ctas" data-ctas>
+        <div class="spotlight-actions">
+          <a class="spotlight-btn spotlight-btn-primary" [routerLink]="projectRoute">
+            View case study
+            <i class="pi pi-arrow-right" aria-hidden="true"></i>
+          </a>
           @if (project.live) {
-            <p-button
-              label="Live Demo"
-              icon="pi pi-external-link"
-              (onClick)="goToLiveUrl(project.live)"
-              styleClass="cta-button cta-primary"
-            ></p-button>
-            <p-button
-              label="Details"
-              icon="pi pi-arrow-right"
-              [routerLink]="projectRoute"
-              outlined
-              styleClass="cta-button cta-secondary"
-            ></p-button>
-          } @else {
-            <p-button
-              label="Details"
-              icon="pi pi-arrow-right"
-              [routerLink]="projectRoute"
-              styleClass="cta-button cta-primary"
-            ></p-button>
+            <a
+              class="spotlight-btn spotlight-btn-ghost"
+              [href]="project.live"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Live demo
+              <i class="pi pi-external-link" aria-hidden="true"></i>
+            </a>
           }
         </div>
       </div>
     </div>
-  </div>
+  </article>
 }

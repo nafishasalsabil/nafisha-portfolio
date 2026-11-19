@@ -1,9 +1,104 @@
-.parent{
+.topbar {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.parent {
   width: 100%;
   margin: auto;
   display: flex;
   justify-content: center;
 }
+
+.topbar-inner {
+  min-height: 3.5rem;
+}
+
+.brand {
+  flex-shrink: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.brand:hover {
+  color: var(--primary-color);
+}
+
+.brand:focus,
+.brand:focus-visible {
+  outline: none;
+}
+
+.brand-dot {
+  color: var(--primary-color);
+}
+
+.menu {
+  transition: all 0.2s ease-in-out;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.03em;
+  text-transform: none;
+}
+
+.icon-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--card-border);
+  border-radius: 0.55rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color-gray);
+  background: transparent;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.icon-btn:hover {
+  color: var(--primary-color);
+  border-color: color-mix(in srgb, var(--primary-color) 45%, var(--card-border));
+}
+
+.icon-btn:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.icon-btn-accent {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border: none;
+  background: transparent;
+  color: var(--text-color-gray);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--primary-color);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
 @media screen and (max-width: 960px) {
   ::ng-deep .p-menubar-mobile {
     display: flex;
@@ -11,6 +106,26 @@
     transition: all 0.2s ease-in-out;
   }
 }
-.menu{
-  transition: all 0.2s ease-in-out;
+
+::ng-deep .menu .p-menubar {
+  background: transparent !important;
+  border: none !important;
+}
+
+::ng-deep .menu .p-menubar-item-link {
+  transition: color 0.2s ease;
+}
+
+::ng-deep .menu .p-menubar-item-link:hover {
+  color: var(--primary-color) !important;
+}
+
+::ng-deep .menu .p-menubar-item.nav-active > .p-menubar-item-content > .p-menubar-item-link {
+  color: var(--primary-color) !important;
+}
+
+::ng-deep .menu .p-menubar-item-link:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 0.35rem;
 }

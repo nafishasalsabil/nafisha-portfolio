@@ -1,107 +1,116 @@
-<div
-  class="wrapper relative bg-cover bg-center bg-no-repeat rounded-3xl mx-4 overflow-hidden my-10"
-  style="background-image: url('assets/images/hire.jpg');"
->
+<section class="contact-section" aria-labelledby="contact-heading">
+  <div class="contact-shell">
+    <div class="contact-layout">
+      <div class="contact-info">
+        <h2 id="contact-heading" class="contact-title">
+          Let's build something meaningful.
+        </h2>
 
-  <div class="relative z-10 flex flex-col items-center justify-center text-center px-6 py-20">
-    <h3 class="text-2xl sm:text-3xl font-semibold text-white mb-4">
-      I Am Available For Freelancer Projects.
-    </h3>
-    <p class="text-surface-300 max-w-2xl mb-6">
-      I help brands and businesses build clean, functional, and engaging digital experiences. Let’s collaborate to bring your ideas to life with quality and precision.
-    </p>
-
-    <a
-      href="#contact-me"
-      class="inline-flex items-center gap-2 px-5 py-2 text-white bg-primary-500 hover:bg-primary-600 rounded-md font-medium transition-all"
-    >
-      Hire me
-      <i class="pi pi-chevron-down"></i>
-    </a>
-
-  </div>
-</div>
-<section id="contact-me" class="py-10">
-  <div class="wrapper py-16 px-4 sm:px-6 lg:px-8" style="background-color: var(--card-hover-bg)">
-    <div class="flex flex-col  items-center gap-5 max-w-6xl mx-auto">
-      <div>
-        <h2 class="text-3xl font-medium">Contact Me</h2>
-      </div>
-      <div>
-        <div class="title-box"></div>
-        <div class="title-line"></div>
-      </div>
-      <div class="mt-5">
-        <p class="text-surface-400 text-center">
-          Let’s build something great together. Whether you have a question, a freelance opportunity, or just want to say hello — I’d love to hear from you. Drop a message and I’ll get back to you as soon as possible.
+        <p class="contact-lede">
+          Whether you have an opportunity, an interesting project, or a question,
+          I'd love to hear from you.
         </p>
 
-      </div>
-      <div class="mt-5 flex gap-4 items-center justify-center">
-        <a
-          href="tel:+8801738739735"
-          class="w-auto h-10 border px-3 rounded-md flex items-center justify-center text-gray-700 hover:text-primary-500"
-        >
-          <i class="pi pi-phone text-primary"></i>
-          <span class="mx-2">+8801738739735</span>
-        </a>
-        <a
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=nafishasalsabil98@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-auto h-10 border px-3 rounded-md flex items-center justify-center text-gray-700 hover:text-primary-500"
-        >
-          <i class="pi pi-envelope text-primary"></i>
-          <span class="mx-2">nafishasalsabil98&#64;gmail.com</span>
-        </a>
-
+        <div class="contact-details">
+          <a
+            class="contact-detail"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=nafishasalsabil98@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="pi pi-envelope" aria-hidden="true"></i>
+            <span>nafishasalsabil98&#64;gmail.com</span>
+          </a>
+          <a class="contact-detail" href="tel:+8801738739735">
+            <i class="pi pi-phone" aria-hidden="true"></i>
+            <span>+8801738739735</span>
+          </a>
+        </div>
       </div>
 
-    </div>
-    <div class="mt-10">
-      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="w-full max-w-6xl mx-auto">
-        <a #mailtoLink style="display: none;"></a>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="flex flex-col space-y-4">
+      <form
+        class="contact-form"
+        [formGroup]="contactForm"
+        (ngSubmit)="onSubmit()"
+        novalidate
+      >
+        <a #mailtoLink class="sr-only-link" tabindex="-1" aria-hidden="true"></a>
+
+        <div class="field-row">
+          <label class="field">
+            <span class="field-label">Name</span>
             <input
               type="text"
               formControlName="name"
-              placeholder="Your Name :"
-              class="border rounded-md p-3 text-sm w-full focus:outline-none focus:none"
+              placeholder="Your name"
+              autocomplete="name"
+              [attr.aria-invalid]="isInvalid('name')"
+              [attr.aria-describedby]="isInvalid('name') ? 'contact-name-error' : null"
             />
+            @if (isInvalid('name')) {
+              <span id="contact-name-error" class="field-error" role="alert">Name is required.</span>
+            }
+          </label>
+
+          <label class="field">
+            <span class="field-label">Email</span>
             <input
               type="email"
               formControlName="email"
-              placeholder="Your email :"
-              class="border rounded-md p-3 text-sm w-full focus:outline-none focus:none"
+              placeholder="Your email"
+              autocomplete="email"
+              [attr.aria-invalid]="isInvalid('email')"
+              [attr.aria-describedby]="isInvalid('email') ? 'contact-email-error' : null"
             />
-            <input
-              type="text"
-              formControlName="subject"
-              placeholder="Your subject :"
-              class="border rounded-md p-3 text-sm w-full focus:outline-none focus:none"
-            />
-          </div>
-          <div>
-      <textarea
-        formControlName="message"
-        placeholder="Your Message :"
-        class="border rounded-md p-3 text-sm w-full h-full min-h-[160px] resize-none focus:outline-none focus:none"
-      ></textarea>
-          </div>
+            @if (isInvalid('email')) {
+              <span id="contact-email-error" class="field-error" role="alert">Enter a valid email.</span>
+            }
+          </label>
         </div>
 
-        <div class="mt-6 text-right">
-          <p-button
-            type="submit" label="Send Message"
-            [disabled]="!contactForm.valid"
-            class="w-full">
-          </p-button>
+        <label class="field">
+          <span class="field-label">Subject</span>
+          <input
+            type="text"
+            formControlName="subject"
+            placeholder="Subject"
+            [attr.aria-invalid]="isInvalid('subject')"
+            [attr.aria-describedby]="isInvalid('subject') ? 'contact-subject-error' : null"
+          />
+          @if (isInvalid('subject')) {
+            <span id="contact-subject-error" class="field-error" role="alert">Subject is required.</span>
+          }
+        </label>
+
+        <label class="field">
+          <span class="field-label">Message</span>
+          <textarea
+            formControlName="message"
+            placeholder="Your message"
+            rows="6"
+            [attr.aria-invalid]="isInvalid('message')"
+            [attr.aria-describedby]="isInvalid('message') ? 'contact-message-error' : null"
+          ></textarea>
+          @if (isInvalid('message')) {
+            <span id="contact-message-error" class="field-error" role="alert">Message is required.</span>
+          }
+        </label>
+
+        <div class="contact-form-actions">
+          <button
+            type="submit"
+            class="contact-submit"
+            [disabled]="submitting"
+          >
+            @if (submitting) {
+              <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+              Sending…
+            } @else {
+              Send Message
+            }
+          </button>
         </div>
       </form>
-
     </div>
   </div>
 </section>
-
-

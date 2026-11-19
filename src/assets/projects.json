@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "img": "org.png",
+    "img": "org-cover.webp",
     "label": "Jotno Admin Panel(Org)",
     "category": "Professional Work",
     "description": "Jotno Admin Panel is a centralized organizational dashboard designed for managing multiple operational aspects of the Jotno ecosystem. It includes features like user management, prescriber onboarding, role-based access control, bulk uploads, and invoice generation. The interface adheres to strict UI/UX fidelity and ensures seamless navigation for administrative workflows.",
@@ -15,11 +15,15 @@
     "live": "",
     "slug": "jotno-admin-panel-org",
     "addedAt": "2023-03-15",
+    "displayOrder": 9,
     "role": "End-to-end",
     "status": "Live",
     "backendType": "integrated",
     "backendStack": "Spring Boot REST APIs",
-    "language": ["TypeScript", "JavaScript"],
+    "language": [
+      "TypeScript",
+      "JavaScript"
+    ],
     "oopProof": [
       "Service-based architecture with dependency injection",
       "Modular component design with reusable UI components",
@@ -28,7 +32,7 @@
   },
   {
     "id": 2,
-    "img": "doctor.png",
+    "img": "doctor-cover.webp",
     "label": "Jotno Doctor Web",
     "category": "Professional Work",
     "description": "The Doctor Web app facilitates appointment scheduling, prescription issuance, and profile management for healthcare professionals. It integrates live geolocation tracking and telemedicine capabilities while ensuring responsive UI across devices. The application supports secure login, streamlined session handling, and advanced patient-doctor interaction features.",
@@ -42,11 +46,15 @@
     "live": "",
     "slug": "jotno-doctor-web",
     "addedAt": "2023-05-20",
+    "displayOrder": 8,
     "role": "End-to-end",
     "status": "Live",
     "backendType": "integrated",
     "backendStack": "Spring Boot REST APIs",
-    "language": ["TypeScript", "JavaScript"],
+    "language": [
+      "TypeScript",
+      "JavaScript"
+    ],
     "oopProof": [
       "Service layer architecture with RxJS observables",
       "Reusable form components with validation",
@@ -55,7 +63,7 @@
   },
   {
     "id": 3,
-    "img": "agrovet.png",
+    "img": "agrovet-cover.webp",
     "label": "Agrovet",
     "category": "Professional Work",
     "description": "Agrovet is a veterinary pharmaceutical management platform that handles distributor-level inventory, sales tracking, and KPI-based reporting. It supports dynamic SKU allocation, APR actualization, and backchannel data access for business users. The solution is scalable and built with robust component design in Angular, tightly coupled with PrimeNG UI components.",
@@ -73,11 +81,14 @@
     "addedAt": "2023-07-10",
     "role": "End-to-end",
     "status": "Live",
-    "language": ["TypeScript", "JavaScript"]
+    "language": [
+      "TypeScript",
+      "JavaScript"
+    ]
   },
   {
     "id": 4,
-    "img": "edcr.png",
+    "img": "edcr-cover.webp",
     "label": "EDCR(Electronic Daily Call Report)",
     "category": "Professional Work",
     "description": "EDCR is a digital platform for field force to log daily calls, customer visits, and product detailing activities. Built as a progressive web app (PWA), it ensures offline data capture and syncing with Firebase. The app simplifies territory management, compliance tracking, and performance logging.",
@@ -90,11 +101,15 @@
     "live": "",
     "slug": "edcr-electronic-daily-call-report",
     "addedAt": "2023-09-05",
+    "displayOrder": 2,
     "role": "End-to-end",
     "status": "Live",
     "backendType": "integrated",
     "backendStack": "Spring Boot REST APIs",
-    "language": ["TypeScript", "JavaScript"],
+    "language": [
+      "TypeScript",
+      "JavaScript"
+    ],
     "oopProof": [
       "PWA architecture with offline-first design",
       "Service-based data synchronization",
@@ -103,7 +118,7 @@
   },
   {
     "id": 5,
-    "img": "mrs.png",
+    "img": "mrs.webp",
     "label": "MRS",
     "category": "Professional Work",
     "description": "MRS is a medical representative scheduling and reporting tool that helps align field visits with sales targets. It includes automated scheduling, visit logging, and summary dashboards. The project simplifies field operations and ensures accountability through structured activity tracking.",
@@ -117,9 +132,13 @@
     "addedAt": "2023-10-18",
     "role": "End-to-end",
     "status": "Live",
+    "hidden": true,
     "backendType": "integrated",
     "backendStack": "Spring Boot REST APIs",
-    "language": ["TypeScript", "JavaScript"],
+    "language": [
+      "TypeScript",
+      "JavaScript"
+    ],
     "oopProof": [
       "Service-based scheduling logic",
       "Reusable dashboard components",
@@ -128,7 +147,7 @@
   },
   {
     "id": 6,
-    "img": "auth.png",
+    "img": "auth.webp",
     "label": "Central Admin Panel",
     "category": "Professional Work",
     "description": "The Central Admin Panel unifies multiple internal tools under a single administrative dashboard for Square Health. It features role-based management, user impersonation, audit logs, and modular integration with different service platforms. The panel was designed to reduce administrative overhead and improve platform governance.",
@@ -144,9 +163,13 @@
     "addedAt": "2023-11-22",
     "role": "End-to-end",
     "status": "Live",
+    "hidden": true,
     "backendType": "integrated",
     "backendStack": "Spring Boot REST APIs",
-    "language": ["TypeScript", "JavaScript"],
+    "language": [
+      "TypeScript",
+      "JavaScript"
+    ],
     "oopProof": [
       "Modular service architecture with Keycloak integration",
       "Reusable admin components with role-based access",
@@ -155,7 +178,7 @@
   },
   {
     "id": 7,
-    "img": "mullar.png",
+    "img": "mullar-cover.webp",
     "label": "Mullar Tex Ltd.",
     "category": "Freelance",
     "description": "This freelance project involved developing a responsive company website for a Bangladeshi textile manufacturer. The site includes a catalog, inquiry form, and content management interface for easy product updates. Focus was given to clean UI and mobile-first design principles.",
@@ -171,11 +194,15 @@
     "addedAt": "2024-01-12",
     "role": "End-to-end",
     "status": "Live",
-    "language": ["TypeScript", "JavaScript", "PHP"]
+    "language": [
+      "TypeScript",
+      "JavaScript",
+      "PHP"
+    ]
   },
   {
-    "id": 9,
-    "img": "grip.png",
+    "id": 8,
+    "img": "grip.webp",
     "label": "Product Logos(The Hair Gel)",
     "category": "Freelance",
     "description": "A creative freelance project to design logos and product branding for a personal care product line. Deliverables included multiple logo variants, label layouts, and packaging mockups. Tools like Illustrator and Photoshop were used to maintain professional visual identity.",
@@ -188,11 +215,12 @@
     "slug": "product-logos-the-hair-gel",
     "addedAt": "2024-02-08",
     "role": "Design",
-    "status": "Completed"
+    "status": "Completed",
+    "hidden": true
   },
   {
-    "id": 10,
-    "img": "careinvoice.png",
+    "id": 9,
+    "img": "careinvoice-cover.webp",
     "label": "CareInvoice",
     "category": "Personal Projects",
     "description": "CareInvoice is a self-initiated SaaS project that automates invoice generation for small clinics and healthcare startups. It supports Stripe-based payments, client management, and email-based invoice dispatch. The UI was designed with simplicity in mind, using Tailwind and Firebase for backend support.",
@@ -208,7 +236,11 @@
     "status": "Prototype",
     "backendType": "built",
     "backendStack": "Spring Boot",
-    "language": ["TypeScript", "JavaScript", "Java"],
+    "language": [
+      "TypeScript",
+      "JavaScript",
+      "Java"
+    ],
     "oopProof": [
       "RESTful API design with Spring Boot controllers",
       "Service layer with dependency injection",
@@ -217,8 +249,8 @@
     ]
   },
   {
-    "id": 11,
-    "img": "clique.png",
+    "id": 10,
+    "img": "clique-cover.webp",
     "label": "Clique",
     "category": "Personal Projects",
     "description": "Clique is a prototype of a niche social platform for building closed interest-based communities. Users can join groups, post updates, and collaborate on private threads. The project explored identity handling and access control mechanisms.",
@@ -234,13 +266,24 @@
     "status": "Prototype",
     "tagline": "A niche social platform for closed interest-based communities",
     "highlights": [
-      "Real-time group collaboration and private threads",
-      "Identity handling and access control mechanisms",
-      "Firebase-powered backend with React frontend"
+      {
+        "title": "Group collaboration",
+        "description": "Group discussions and private conversation threads."
+      },
+      {
+        "title": "Access control",
+        "description": "Identity handling and permissions for user interactions."
+      },
+      {
+        "title": "Firebase backend",
+        "description": "React frontend backed by Firebase Auth and Firestore."
+      }
     ],
     "backendType": "firebase",
     "backendStack": "Firebase Auth + Firestore",
-    "language": ["JavaScript"],
+    "language": [
+      "JavaScript"
+    ],
     "oopProof": [
       "Component-based architecture with React",
       "Custom hooks for data management",
@@ -248,15 +291,15 @@
     ]
   },
   {
-    "id": 12,
-    "img": "cassette.png",
+    "id": 11,
+    "img": "cassette-cover.webp",
     "label": "Cassette",
     "category": "Personal Projects",
     "description": "Cassette is a frontend clone of a modern music streaming interface, styled to mimic apps like Spotify. It showcases responsive layouting, search/filtering, and dynamic theming. The app consumes Spotify APIs to simulate a real music browsing experience.",
     "technologies": [
-     "HTML",
-     "CSS",
-     "Firebase"
+      "HTML",
+      "CSS",
+      "Firebase"
     ],
     "live": "",
     "slug": "cassette",
@@ -265,11 +308,13 @@
     "status": "Prototype",
     "backendType": "firebase",
     "backendStack": "Firebase Auth + Firestore",
-    "language": ["JavaScript"]
+    "language": [
+      "JavaScript"
+    ]
   },
   {
-    "id": 13,
-    "img": "chalkboard.png",
+    "id": 12,
+    "img": "chalkboard-cover.webp",
     "label": "Chalkboard",
     "category": "Personal Projects",
     "description": "Chalkboard is an experimental web app for collaborative whiteboarding and virtual classroom sessions. It features real-time canvas drawing using WebSockets and interactive annotation tools. Built with Next.js and Canvas API, it served as a testbed for synchronous visual collaboration.",
@@ -285,14 +330,16 @@
     "status": "Prototype",
     "backendType": "firebase",
     "backendStack": "Firebase Auth + Firestore",
-    "language": ["JavaScript"]
+    "language": [
+      "JavaScript"
+    ]
   },
   {
-    "id": 14,
-    "img": "ui-tool.png",
-    "label": "UI Prompt Tool",
+    "id": 13,
+    "img": "figma-cover.webp",
+    "label": "Prompt-to-UI Suite",
     "category": "Personal Projects",
-    "description": "UI Prompt Tool is a React-based application that transforms natural language prompts into live-renderable HTML and CSS components. Built with Vite and Tailwind CSS v4, the tool integrates the OpenAI Chat API to convert user intents into frontend code. It features a minimalistic design, real-time preview, and deployability on Netlify, aiming to simplify UI prototyping and developer workflows.",
+    "description": "Prompt-to-UI Suite combines two AI-powered frontend prototyping tools into one project: UI Prompt Tool and Prompt-to-Figma Tool. Built with React, Vite, and Tailwind CSS v4, the applications integrate the OpenAI Chat API to transform natural language descriptions into generated HTML and CSS components, live UI previews, and Figma-oriented design outputs. Together, they streamline UI experimentation and bridge the gap between design and development.",
     "technologies": [
       "React",
       "Vite",
@@ -300,48 +347,55 @@
       "OpenAI Chat API"
     ],
     "live": "https://ui-prompt-tool.netlify.app/",
-    "slug": "ui-prompt-tool",
+    "liveLinks": [
+      {
+        "label": "UI Generator",
+        "url": "https://ui-prompt-tool.netlify.app/"
+      },
+      {
+        "label": "Figma Generator",
+        "url": "https://figma-ui-generator.netlify.app/"
+      }
+    ],
+    "slug": "prompt-to-ui-suite",
     "addedAt": "2024-08-22",
+    "displayOrder": 6,
     "role": "End-to-end",
     "status": "Live",
-    "tagline": "Transform natural language into live-renderable UI components",
+    "tagline": "Turn natural language into interactive UI and Figma-ready outputs",
     "highlights": [
-      "OpenAI Chat API integration for code generation",
-      "Real-time preview with instant feedback",
-      "Minimalistic design optimized for developer workflows"
+      {
+        "title": "AI-powered UI generation",
+        "description": "Converts natural-language prompts into frontend components using OpenAI."
+      },
+      {
+        "title": "Live HTML/CSS previews",
+        "description": "Generates components with interactive browser previews."
+      },
+      {
+        "title": "Figma-oriented output",
+        "description": "Design outputs that support faster prototyping workflows."
+      },
+      {
+        "title": "Two live applications",
+        "description": "Separate tools for browser previews and Figma-oriented outputs."
+      }
     ],
-    "language": ["JavaScript"]
+    "challenges": [
+      "Transforming unstructured user prompts into usable frontend code",
+      "Rendering AI-generated UI previews consistently",
+      "Supporting different output workflows for browser previews and Figma"
+    ],
+    "language": [
+      "JavaScript"
+    ]
   },
   {
-    "id": 15,
-    "img": "figma.png",
-    "label": "Prompt-to-Figma Tool",
-    "category": "Personal Projects",
-    "description": "Prompt-to-Figma Tool enables real-time conversion of UI descriptions into Figma-compatible JSON or frontend components. Developed using React and Tailwind CSS v4, it leverages OpenAI Chat API to interpret natural language prompts and generate design-ready code. The tool is ideal for bridging design-development workflows and streamlining rapid prototyping.",
-    "technologies": [
-      "React",
-      "Tailwind CSS v4",
-      "OpenAI Chat API"
-    ],
-    "live": "https://figma-ui-generator.netlify.app/",
-    "slug": "prompt-to-figma-tool",
-    "addedAt": "2024-09-10",
-    "role": "End-to-end",
-    "status": "Live",
-    "tagline": "Bridge design and development with AI-powered UI generation",
-    "highlights": [
-      "Figma-compatible JSON generation",
-      "Real-time design-to-code conversion",
-      "Streamlined rapid prototyping workflow"
-    ],
-    "language": ["JavaScript"]
-  },
-  {
-    "id": 16,
-    "img": "fryverse.png",
+    "id": 14,
+    "img": "fryverse-cover.webp",
     "label": "FryVerse",
     "category": "Personal Projects",
-    "description": "FRYVERSE is a playful, single-page React experience that lets users explore different fry \"personalities\" and build a custom fry box by choosing a cut, seasoning, and sauce. It blends a premium dark UI with smooth GSAP-driven interactions, Lottie hero animation, and micro-UX details like badges, pairing guidance, and a \"Play & Save\" mini-game (Catch the Fries) that unlocks discounts. The result feels like a modern interactive product site—part menu, part customization flow, part arcade.",
+    "description": "FRYVERSE is a playful, single-page React experience that lets users explore different fry \"personalities\" and build a custom fry box by choosing a cut, seasoning, and sauce. It blends a premium dark UI with smooth GSAP-driven interactions, Lottie hero animation, and micro-UX details like badges, pairing guidance, and a \"Play & Save\" mini-game (Catch the Fries) that unlocks discounts. The result feels like a modern interactive product site\u2014part menu, part customization flow, part arcade.",
     "technologies": [
       "React",
       "Tailwind CSS v4",
@@ -350,12 +404,22 @@
     "live": "https://fryverse.netlify.app/",
     "slug": "fryverse",
     "addedAt": "2024-12-15",
+    "displayOrder": 1,
     "spotlight": true,
     "tagline": "A playful, interactive experience that transforms fries into a customizable adventure",
     "highlights": [
-      "GSAP-driven animations for smooth, premium interactions",
-      "Interactive mini-game (Catch the Fries) with discount rewards",
-      "Dark UI with Lottie hero animations and micro-UX details"
+      {
+        "title": "GSAP animations",
+        "description": "Smooth interactions for a premium, playful experience."
+      },
+      {
+        "title": "Catch the Fries",
+        "description": "Interactive mini-game that unlocks discount rewards."
+      },
+      {
+        "title": "Dark UI details",
+        "description": "Lottie hero animation with polished micro-UX touches."
+      }
     ],
     "role": "End-to-end",
     "status": "Live",
@@ -364,11 +428,13 @@
       "Creating an engaging mini-game that feels integrated, not gimmicky",
       "Designing a dark UI that remains accessible and readable"
     ],
-    "language": ["JavaScript"]
+    "language": [
+      "JavaScript"
+    ]
   },
   {
-    "id": 17,
-    "img": "inv-ter.png",
+    "id": 15,
+    "img": "inv-ter-cover.webp",
     "label": "Investigator Terminal",
     "category": "Personal Projects",
     "description": "A premium, portfolio-worthy single-page case dossier interface built with Next.js, TypeScript, and Tailwind CSS. Features a modern, minimal monochrome design with scroll-driven animations and a professional investigator terminal aesthetic.",
@@ -381,19 +447,32 @@
     "live": "https://investigator-terminal.netlify.app/",
     "slug": "investigator-terminal",
     "addedAt": "2024-10-15",
+    "displayOrder": 10,
     "role": "End-to-end",
     "status": "Live",
     "tagline": "A premium case dossier interface with terminal aesthetic",
     "highlights": [
-      "Scroll-driven animations for immersive storytelling",
-      "Minimal monochrome design with professional aesthetic",
-      "Next.js and TypeScript for type-safe development"
+      {
+        "title": "Scroll-driven motion",
+        "description": "Animations that support immersive case storytelling."
+      },
+      {
+        "title": "Monochrome design",
+        "description": "Minimal aesthetic suited to a professional terminal feel."
+      },
+      {
+        "title": "Type-safe stack",
+        "description": "Next.js and TypeScript for structured frontend development."
+      }
     ],
-    "language": ["TypeScript", "JavaScript"]
+    "language": [
+      "TypeScript",
+      "JavaScript"
+    ]
   },
   {
-    "id": 18,
-    "img": "fmcg.png",
+    "id": 16,
+    "img": "fmcg-cover.webp",
     "label": "FMCG Inventory System",
     "category": "Personal Projects",
     "description": "A production-grade, inventory-based ecommerce platform for FMCG (Fast-Moving Consumer Goods) categories, featuring demand tracking, ABC classification, and inventory management.",
@@ -410,13 +489,23 @@
     "live": "https://fmcg-demo-inventory.netlify.app/",
     "slug": "fmcg-inventory-system",
     "addedAt": "2024-11-20",
+    "displayOrder": 7,
     "role": "End-to-end",
     "status": "Live",
     "tagline": "Production-grade inventory management for FMCG categories",
     "highlights": [
-      "Demand tracking and ABC classification",
-      "Full-stack TypeScript with NestJS and Prisma",
-      "Docker containerization for deployment"
+      {
+        "title": "Demand & ABC classification",
+        "description": "Tracks demand and categorizes products for inventory prioritization."
+      },
+      {
+        "title": "Full-stack TypeScript",
+        "description": "NestJS and Prisma power the backend and data layer."
+      },
+      {
+        "title": "Docker deployment",
+        "description": "Containerized setup for consistent application deployment."
+      }
     ],
     "challenges": [
       "Implementing complex inventory algorithms efficiently",
@@ -426,12 +515,207 @@
     "backendType": "built",
     "backendStack": "NestJS + PostgreSQL",
     "database": "PostgreSQL",
-    "language": ["TypeScript", "JavaScript"],
+    "language": [
+      "TypeScript",
+      "JavaScript"
+    ],
     "oopProof": [
       "NestJS modular architecture with dependency injection",
       "Service layer with DTOs for data validation",
       "Repository pattern with Prisma ORM",
       "Reusable React components with TypeScript interfaces"
+    ]
+  },
+  {
+    "id": 17,
+    "img": "hibaby.webp",
+    "label": "HiBaby",
+    "category": "Personal Projects",
+    "description": "HiBaby is a family-focused baby care application built with React Native and Expo. It helps parents and family members track feeding, sleep, and other daily activities through a shared experience. The system features secure authentication, family-scoped data access, event-based activity records, and a FastAPI backend designed for reliable tracking and future offline synchronization.",
+    "technologies": [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "SQLAlchemy",
+      "Alembic"
+    ],
+    "live": "",
+    "slug": "hibaby",
+    "addedAt": "2026-11-18",
+    "displayOrder": 4,
+    "role": "End-to-end",
+    "status": "In Development",
+    "tagline": "A shared baby care companion for modern families",
+    "highlights": [
+      {
+        "title": "Feeding & sleep tracking",
+        "description": "Activity history for shared baby care routines."
+      },
+      {
+        "title": "Secure authentication",
+        "description": "Family-scoped access to shared baby care records."
+      },
+      {
+        "title": "Event-based records",
+        "description": "Correction support with idempotent record handling."
+      },
+      {
+        "title": "English & Bangla",
+        "description": "Localization supporting families in their preferred language."
+      }
+    ],
+    "challenges": [
+      "Designing consistent activity records across multiple caregivers",
+      "Implementing secure family-level authorization",
+      "Handling activity corrections without losing historical records",
+      "Building a mobile-first architecture for future offline support"
+    ],
+    "backendType": "built",
+    "backendStack": "FastAPI + SQLAlchemy + PostgreSQL",
+    "database": "PostgreSQL",
+    "language": [
+      "TypeScript",
+      "Python"
+    ],
+    "oopProof": [
+      "Modular FastAPI routers with Pydantic validation",
+      "SQLAlchemy models and Alembic database migrations",
+      "Family-scoped authorization using JWT authentication",
+      "Immutable activity event records with correction support"
+    ]
+  },
+  {
+    "id": 18,
+    "img": "compliance-tracker.webp",
+    "label": "Compliance Tracker",
+    "category": "Personal Projects",
+    "description": "Compliance Tracker is a multi-tenant SaaS application designed to help accounting firms manage recurring regulatory deadlines and compliance workflows. Built with React, TypeScript, FastAPI, and PostgreSQL, it provides compliance templates, deadline tracking, role-based access, evidence management, and activity histories. The platform isolates company data while giving teams visibility into upcoming, completed, and overdue obligations.",
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "FastAPI",
+      "PostgreSQL",
+      "Supabase",
+      "SQLAlchemy",
+      "Docker"
+    ],
+    "live": "",
+    "slug": "compliance-tracker",
+    "addedAt": "2026-11-18",
+    "displayOrder": 5,
+    "role": "End-to-end",
+    "status": "Prototype",
+    "tagline": "Multi-tenant compliance management with automated deadline tracking",
+    "highlights": [
+      {
+        "title": "Multi-tenant isolation",
+        "description": "Company-level separation across compliance data."
+      },
+      {
+        "title": "Recurring compliance",
+        "description": "Templates and automated generation of recurring deadlines."
+      },
+      {
+        "title": "Submission workflows",
+        "description": "Role-based management of submissions and verification."
+      },
+      {
+        "title": "Obligation dashboard",
+        "description": "Views for upcoming, completed, and overdue items."
+      },
+      {
+        "title": "Evidence & activity history",
+        "description": "Tracks supporting records and compliance-related actions."
+      }
+    ],
+    "challenges": [
+      "Enforcing tenant isolation across backend queries",
+      "Generating recurring deadlines while preserving historical records",
+      "Managing compliance status transitions and verification",
+      "Designing dashboard metrics for accurate deadline reporting"
+    ],
+    "backendType": "built",
+    "backendStack": "FastAPI + SQLAlchemy + PostgreSQL",
+    "database": "PostgreSQL",
+    "language": [
+      "TypeScript",
+      "Python"
+    ],
+    "oopProof": [
+      "Layered FastAPI architecture with service-based business logic",
+      "SQLAlchemy ORM models and Alembic migrations",
+      "Tenant-scoped database access and authorization",
+      "Pydantic request validation and RESTful API design"
+    ]
+  },
+  {
+    "id": 19,
+    "img": "peopledesk.webp",
+    "label": "PeopleDesk",
+    "category": "Personal Projects",
+    "description": "PeopleDesk is a full-stack HR management platform designed to centralize employee records and everyday human resource operations. Developed with React, TypeScript, Node.js, Express, Prisma, and PostgreSQL, the system supports employee management, leave requests, approval workflows, payroll tracking, document management, and role-based authorization. Its modular backend architecture focuses on maintaining data consistency across interconnected HR processes.",
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express.js",
+      "Prisma",
+      "PostgreSQL",
+      "REST API"
+    ],
+    "live": "",
+    "slug": "peopledesk",
+    "addedAt": "2026-11-18",
+    "displayOrder": 3,
+    "role": "End-to-end",
+    "status": "Prototype",
+    "tagline": "A centralized HR platform for employee and workforce management",
+    "highlights": [
+      {
+        "title": "Employee management",
+        "description": "Centralized records and department organization."
+      },
+      {
+        "title": "Leave approvals",
+        "description": "Leave requests with role-based approval workflows."
+      },
+      {
+        "title": "Payroll tracking",
+        "description": "Structured salary records and compensation details."
+      },
+      {
+        "title": "Document management",
+        "description": "Organization of employee files and HR documents."
+      },
+      {
+        "title": "Role-based access",
+        "description": "Permission controls across HR management workflows."
+      }
+    ],
+    "challenges": [
+      "Designing relational data models for interconnected HR workflows",
+      "Enforcing role-specific access to sensitive employee records",
+      "Maintaining consistency across leave, payroll, and employee data",
+      "Structuring reusable backend services for growing HR requirements"
+    ],
+    "backendType": "built",
+    "backendStack": "Node.js + Express.js + Prisma",
+    "database": "PostgreSQL",
+    "language": [
+      "TypeScript",
+      "JavaScript"
+    ],
+    "oopProof": [
+      "Modular Express.js controllers and service layers",
+      "Prisma ORM with relational PostgreSQL models",
+      "Role-based authorization middleware",
+      "Reusable REST API endpoints for HR workflows",
+      "TypeScript interfaces for structured data handling"
     ]
   }
 ]

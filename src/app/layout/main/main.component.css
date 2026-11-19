@@ -1,7 +1,13 @@
-.card{
+.card {
   width: 100%;
-
 }
+
+.main-content {
+  /* Fixed topbar clearance — hero pulls this back with matching negative margin */
+  --topbar-offset: 4.25rem;
+  padding-top: var(--topbar-offset);
+}
+
 section {
-  scroll-margin-top: 80px;
+  scroll-margin-top: var(--topbar-offset, 4.25rem);
 }

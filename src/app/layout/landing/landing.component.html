@@ -1,23 +1,24 @@
-<div class="h-full overflow-x-hidden">
-  <section id="dashboard">
+<div class="home-page h-full overflow-x-hidden">
+  <!-- Layout wrappers keep public fragment IDs; section landmarks live in child components. -->
+  <div id="dashboard">
     <app-dashboard></app-dashboard>
-  </section>
-  <section id="about-me" class="bg-gray-100">
-    <app-about-me></app-about-me>
-  </section>
-  <section id="services" class="bg-gray-100">
-    <app-services></app-services>
-  </section>
-  <section id="resume" class="bg-gray-100">
-    <app-resume></app-resume>
-  </section>
-  <!-- <section id="fullstack-readiness" class="bg-gray-100">
-    <app-fullstack-readiness></app-fullstack-readiness>
-  </section> -->
-  <section id="projects" class="bg-gray-100">
+  </div>
+
+  <div id="projects">
     <app-projects></app-projects>
-  </section>
-  <section id="contact" class="pt-3" style="background-color: var(--card-hover-bg)">
+  </div>
+
+  <!-- Experience (keeps #resume for fragment compatibility) -->
+  <div id="resume">
+    <app-resume></app-resume>
+  </div>
+
+  <!-- About & Expertise (#about-me); expertise also exposes #services -->
+  <div id="about-me">
+    <app-about-me></app-about-me>
+  </div>
+
+  <div id="contact">
     <app-contact-me></app-contact-me>
-  </section>
+  </div>
 </div>

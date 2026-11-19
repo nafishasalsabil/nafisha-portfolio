@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = "dist/untitled1/browser"
+
+# Existing files (robots.txt, sitemap.xml, assets) are served first.
+# SPA fallback only applies when no matching static file exists.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

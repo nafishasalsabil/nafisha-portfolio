@@ -1,42 +1,64 @@
-<div class="parent py-16 px-4 sm:px-6 lg:px-8" style="background-color: var(--topbar-color);">
-  <div class="flex items-start max-w-4xl mx-auto sm:w-full gap-4">
-    <div class="w-full">
-      <span class="text-lg font-semibold  light:text-gray-900 span-text">Looking for a Developer?</span>
-      <h1 class="text-5xl font-bold text-primary-600 span-text mb-3">I'm Nafisha Salsabil</h1>
-      <p class="text-base sm:text-lg leading-relaxed p-text" style="color: var(--text-color-gray)">
-        Full-stack developer focused on building practical web applications, automation tools, and data-driven systems that solve real business problems. I turn manual, messy workflows into clean, reliable, and scalable solutions.
-      </p>
-      <div class="flex gap-4 mt-10">
-        <a href="#contact">
-          <p-button styleClass="bg-indigo-500" label="Hire me"></p-button>
-        </a>
-        <a href="assets/Nafisha_Salsabil_Resume.pdf" download>
-          <p-button outlined label="Download Resume" icon="pi pi-download" iconPos="right"></p-button>
-        </a>
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero-shell">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">
+          <span class="hero-eyebrow-rule" aria-hidden="true"></span>
+          Software Engineer · Full-Stack Developer
+        </p>
+
+        <h1 id="hero-heading" class="hero-title">
+          <span class="hero-title-line">I'm Nafisha</span>
+          <span class="hero-title-line">Salsabil.</span>
+        </h1>
+
+        <p class="hero-lede">
+          I build practical web applications and thoughtful digital experiences,
+          turning complex workflows into clean, reliable software.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="hero-btn hero-btn-primary">
+            Explore My Work
+            <i class="pi pi-arrow-right" aria-hidden="true"></i>
+          </a>
+          <a href="#contact" class="hero-btn hero-btn-secondary">
+            Get in Touch
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="w-full md:w-1/2 justify-center hidden md:flex">
-      <div class="relative w-64 h-64">
-        <svg class="absolute top-0 left-0 w-full h-full z-20 rounded-md" viewBox="0 0 100 100"
-             preserveAspectRatio="none">
-          <rect
-            x="0"
-            y="0"
-            width="100"
-            height="100"
-            class="stroke-primary-500 fill-none"
-            stroke-width="3"
-            pathLength="1"
-            style="
-          stroke-dasharray: 1;
-          stroke-dashoffset: 1;
-          animation: draw-border 1s ease forwards, fade-out 1s ease 1s forwards;
-        "
+
+      <div class="hero-portrait">
+        <div class="portrait-stage">
+          <span class="portrait-blob portrait-blob-soft" aria-hidden="true"></span>
+          <span class="portrait-blob portrait-blob-pink" aria-hidden="true"></span>
+
+          <img
+            class="portrait-photo"
+            src="assets/images/demo.webp"
+            alt="Portrait of Nafisha Salsabil"
+            width="480"
+            height="600"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
           />
-        </svg>
-        <img src="assets/images/me.jpg" alt="Nafisha Salsabil"
-             class="w-full h-full object-cover rounded-md shadow-lg z-10 relative"/>
+        </div>
       </div>
     </div>
+
+    <ul class="hero-highlights" aria-label="Professional highlights">
+      @for (item of highlights; track item.label) {
+        <li class="hero-highlight">
+          <span class="hero-highlight-icon" aria-hidden="true">
+            <i class="{{ item.icon }}"></i>
+          </span>
+          <div class="hero-highlight-text">
+            <span class="hero-highlight-label">{{ item.label }}</span>
+            <span class="hero-highlight-value">{{ item.value }}</span>
+          </div>
+        </li>
+      }
+    </ul>
   </div>
-</div>
+</section>
